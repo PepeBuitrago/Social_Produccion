@@ -179,7 +179,7 @@ Conexion::cerrar_conexion();
           req.send();
         }
 
-        setInterval(function(){loadChat();}, 1000);
+        //setInterval(function(){loadChat();}, 1000);
       </script>
   </body>
 </html>

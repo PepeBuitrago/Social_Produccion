@@ -15,13 +15,14 @@ if (isset($_POST['enviar'])) {
     if ($validador -> registro_valido()) {
         $usuario = new Usuario('', $validador-> obtener_nombre(),
         		$validador -> obtener_apellido(),
+        		'',
         		$validador -> obtener_foto(),
                 $validador -> obtener_email(), 
                 password_hash($validador -> obtener_clave(), PASSWORD_DEFAULT), 
                 '', 
                 '',
                 '');
-        $usuario_insertado = RepositorioUsuario :: insertar_usuario(Conexion :: obtener_conexion(), $usuario);
+        $usuario_insertado = RepositorioUsuario::insertar_usuario(Conexion::obtener_conexion(), $usuario);
         
         if ($usuario_insertado) {
             Redireccion::redirigir(RUTA_REGISTRO_CORRECTO . '?n=' . $usuario -> obtener_nombre().' '.$usuario -> obtener_apellido());

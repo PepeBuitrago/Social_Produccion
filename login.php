@@ -14,10 +14,10 @@ if (isset($_POST['login'])) {
     Conexion::abrir_conexion();
     
     $validador = new ValidadorLogin($_POST['email'], $_POST['clave'], Conexion::obtener_conexion());
-    $nombre = $validador -> obtener_usuario() -> obtener_nombre();
-    $apellido = $validador -> obtener_usuario() -> obtener_apellido();
-    if ($validador -> obtener_error() === '' &&
-            !is_null($validador -> obtener_usuario())) {
+    
+    if ($validador -> obtener_error() === '' && !is_null($validador -> obtener_usuario())) {
+    	$nombre = $validador -> obtener_usuario() -> obtener_nombre();
+    	$apellido = $validador -> obtener_usuario() -> obtener_apellido();
         ControlSesion::iniciar_sesion(
                 $validador -> obtener_usuario() -> obtener_id(),
                 $nombre.' '.$apellido,

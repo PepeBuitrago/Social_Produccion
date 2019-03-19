@@ -22,7 +22,7 @@ class RepositorioUsuario {
                 if (count($resultado)) {
                     foreach ($resultado as $fila) {
                         $usuarios[] = new Usuario(
-                                $fila['id'], $fila['nombre'], $fila['apellido'], $fila['url_foto'], $fila['email'], $fila['password'], $fila['fecha_registro'], $fila['activo'], $fila['grupo']
+                                $fila['id'], $fila['nombre'], $fila['apellido'], $fila['descripcion'], $fila['url_foto'], $fila['email'], $fila['password'], $fila['fecha_registro'], $fila['activo'], $fila['grupo']
                         );
                     }
                 } else {
@@ -62,15 +62,25 @@ class RepositorioUsuario {
         
         if (isset($conexion)) {
             try {
-                $sql = "INSERT INTO usuarios(nombre, apellido, url_foto, email, password, fecha_registro, activo, grupo) VALUES(:nombre, :apellido, :url_foto, :email, :password, NOW(), 0, 0)";
+
+                $descripcion = 'Usuario nuevo.';
+                $nombre = $usuario -> obtener_nombre();
+                $apellido = $usuario -> obtener_apellido();
+                $foto = $usuario -> obtener_foto();
+                $email = $usuario -> obtener_email();
+                $password = $usuario -> obtener_password();
+
+
+                $sql = "INSERT INTO usuarios(nombre, apellido, descripcion, url_foto, email, password, fecha_registro, activo, grupo) VALUES(:nombre, :apellido, :descripcion, :url_foto, :email, :password, NOW(), 0, 0)";
                 
                 $sentencia = $conexion -> prepare($sql);
                 
-                $sentencia -> bindParam(':nombre', $usuario -> obtener_nombre(), PDO::PARAM_STR);
-                $sentencia -> bindParam(':apellido', $usuario -> obtener_apellido(), PDO::PARAM_STR);
-                $sentencia -> bindParam(':url_foto', $usuario -> obtener_foto(), PDO::PARAM_STR);
-                $sentencia -> bindParam(':email', $usuario -> obtener_email(), PDO::PARAM_STR);
-                $sentencia -> bindParam(':password', $usuario -> obtener_password(), PDO::PARAM_STR);
+                $sentencia -> bindParam(':nombre', $nombre, PDO::PARAM_STR);
+                $sentencia -> bindParam(':apellido', $apellido, PDO::PARAM_STR);
+                $sentencia -> bindParam(':descripcion', $descripcion, PDO::PARAM_STR);
+                $sentencia -> bindParam(':url_foto', $foto, PDO::PARAM_STR);
+                $sentencia -> bindParam(':email', $email, PDO::PARAM_STR);
+                $sentencia -> bindParam(':password', $password, PDO::PARAM_STR);
                 
                 $usuario_insertado = $sentencia -> execute();
             } catch (PDOException $ex) {
@@ -158,6 +168,7 @@ class RepositorioUsuario {
                     $usuario = new Usuario($resultado['id'],
                             $resultado['nombre'],
                             $resultado['apellido'],
+                            $resultado['descripcion'],
                             $resultado['url_foto'],
                             $resultado['email'],
                             $resultado['password'],
@@ -194,6 +205,7 @@ class RepositorioUsuario {
                     $usuario = new Usuario($resultado['id'],
                             $resultado['nombre'],
                             $resultado['apellido'],
+                            $resultado['descripcion'],
                             $resultado['url_foto'],
                             $resultado['email'],
                             $resultado['password'],
@@ -243,11 +255,12 @@ class RepositorioUsuario {
 
         if (isset($conexion)) {
             try  {
-                $sql = "UPDATE usuarios SET nombre = :nombre, apellido = :apellido, url_foto = :url_foto, email = :email, activo = :activo, grupo = :grupo WHERE id = :id";
+                $sql = "UPDATE usuarios SET nombre = :nombre, apellido = :apellido, descripcion = :descripcion, url_foto = :url_foto, email = :email, activo = :activo, grupo = :grupo WHERE id = :id";
 
                 $sentencia = $conexion -> prepare($sql);
                 $nombre_nuevo = $usuario -> obtener_nombre();
                 $apellido_nuevo = $usuario -> obtener_apellido();
+                $descripcion_nuevo = $usuario -> obtener_descripcion();
                 $foto_nuevo = $usuario -> obtener_foto();
                 $email_nuevo = $usuario -> obtener_email();
                 $activo_nuevo = $usuario -> esta_activo();
@@ -255,6 +268,7 @@ class RepositorioUsuario {
                 $id_nuevo = $usuario -> obtener_id();
                 $sentencia -> bindParam(':nombre', $nombre_nuevo, PDO::PARAM_STR);
                 $sentencia -> bindParam(':apellido', $apellido_nuevo, PDO::PARAM_STR);
+                $sentencia -> bindParam(':descripcion', $descripcion_nuevo, PDO::PARAM_STR);
                 $sentencia -> bindParam(':url_foto', $foto_nuevo, PDO::PARAM_STR);
                 $sentencia -> bindParam(':email', $email_nuevo, PDO::PARAM_STR);
                 $sentencia -> bindParam(':activo', $activo_nuevo, PDO::PARAM_STR);

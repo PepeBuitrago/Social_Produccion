@@ -7,6 +7,7 @@ CREATE TABLE usuarios (
 	id INT NOT NULL UNIQUE AUTO_INCREMENT,
 	nombre VARCHAR(25) NOT NULL,
 	apellido VARCHAR(25) NOT NULL,
+	descripcion VARCHAR(140),
 	url_foto VARCHAR(255) NOT NULL,
 	email VARCHAR(255) NOT NULL UNIQUE,
 	password VARCHAR(255) NOT NULL,
@@ -19,7 +20,7 @@ CREATE TABLE usuarios (
 CREATE TABLE grupos (
 	id INT NOT NULL UNIQUE AUTO_INCREMENT,
 	nombre VARCHAR(25) NOT NULL,
-	descripcion VARCHAR(255),
+	descripcion VARCHAR(140),
 	admin_id INT NOT NULL,
 	fecha_creacion DATETIME NOT NULL,
 	activo TINYINT NOT NULL,

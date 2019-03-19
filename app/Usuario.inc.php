@@ -4,6 +4,7 @@ class Usuario {
     
     private $id;
     private $nombre;
+    private $descripcion;
     private $apellido;
     private $url_foto;
     private $email;
@@ -12,10 +13,11 @@ class Usuario {
     private $activo;
     private $grupo;
     
-    public function __construct($id, $nombre, $apellido, $url_foto, $email, $password, $fecha_registro, $activo, $grupo) {
+    public function __construct($id, $nombre, $apellido, $descripcion, $url_foto, $email, $password, $fecha_registro, $activo, $grupo) {
         $this -> id = $id;
         $this -> nombre = $nombre;
         $this -> apellido = $apellido;
+        $this -> descripcion = $descripcion;
         $this -> url_foto = $url_foto;
         $this -> email = $email;
         $this -> password = $password;
@@ -30,6 +32,10 @@ class Usuario {
     
     public function obtener_nombre() {
         return $this -> nombre;
+    }
+
+    public function obtener_descripcion() {
+        return $this -> descripcion;
     }
 
     public function obtener_apellido() {
@@ -63,6 +69,11 @@ class Usuario {
     public function cambiar_nombre($nombre) {
         $this -> nombre = $nombre;
     }
+
+    public function cambiar_descripcion($descripcion) {
+        $this -> descripcion = $descripcion;
+    }
+
 
     public function cambiar_apellido($apellido) {
         $this -> apellido = $apellido;

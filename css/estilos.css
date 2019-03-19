@@ -220,7 +220,7 @@ div.imagen_contenedor label {
     padding-top: 25px;
     display: grid;
     grid-template-columns: repeat(auto-fill, 250px);
-    grid-gap: 10px;
+    grid-gap: 15px;
     justify-content: center;
 }
 

@@ -53,7 +53,7 @@ $alerta_activo = '<div style="background-color: #6ABC6E;" class="alert">
     	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
 	      <span class="navbar-toggler-icon"></span>
 	      </button>
-	  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="<?php echo SERVIDOR;?>?p=Perfil"><img style="border-radius: 50%; width: 30px;" src="<?php echo $usuario -> obtener_foto(); ?>">&nbsp&nbsp&nbsp<?php echo $_SESSION['nombre_usuario']; ?></a>
+	  <a class="col-sm-3 col-md-2 mr-0" href="<?php echo SERVIDOR;?>?p=Perfil"><img style="border-radius: 50%; width: 30px;" src="<?php echo $usuario -> obtener_foto(); ?>">&nbsp&nbsp&nbsp<?php echo $_SESSION['nombre_usuario']; ?></a>
 	  <div class="collapse navbar-collapse" id="navbarsExample08">
 	  	<input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
 		  <ul class="navbar-nav px-3">

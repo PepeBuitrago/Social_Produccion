@@ -123,7 +123,7 @@ Conexion::cerrar_conexion();
 
           <div style="position: absolute; left: 85%;" class="btn-toolbar mb-2 mb-md-0">
               <div class="btn-group mr-2">
-                <button type="button" class="btn btn-sm btn-outline-secondary"><a href="<?php echo RUTA_CHAT;?>?g=<?php echo $_SESSION['grupo_usuario'];?>">Nueva nota&nbsp<i class='far fa-edit' style='font-size:17px'></i></a></button>
+                <a data-toggle="modal" data-target="#exampleModal" class="btn btn-sm btn-outline-secondary">Nueva nota&nbsp<i class='far fa-edit' style='font-size:17px'></i></a>
               </div>
           </div>
 
@@ -164,6 +164,45 @@ Conexion::cerrar_conexion();
           <hr>
           <label style="text-align: right;">10:00 pm</label>
         </div>
+
+
+
+
+        <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Nuevo nota</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+            <form method="post" action="index.php">
+            <div class="dropdown">
+              <button class="nav-link text-muted" data-toggle="dropdown">
+                    Tipo <i class='fa fa-users' style='font-size:20px'></i>
+                  </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item nav-link text-muted" data-toggle="modal" data-target="#exampleModal">Nuevo Grupo&nbsp&nbsp<i class='far fa-edit' style='font-size:14px'></i></a>
+                <hr>
+                <div id="listaGrupos"></div>
+              </div>
+            </div>
+            <textarea rows="5" class="input100 inputText" name="descripcion" placeholder="Ingresa un mensaje"></textarea>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn colorOficial" data-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn colorOficial" name="crear_grupo">Siguiente</button>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+
 
       </main>
     </div>

@@ -73,7 +73,7 @@
 		</div>
 	</div>
 	<div class="itemLocacion">
-		<img src="https://ep01.epimg.net/sociedad/imagenes/2018/09/25/actualidad/1537861260_915743_1537864721_noticia_normal.jpg">
+		<img src="https://www.dzoom.org.es/wp-content/uploads/2017/05/estudio-casero-2-810x540.jpg">
 		<h1 class="h4"><i class='fas fa-map-marker-alt' style='font-size:17px'></i> Nombre locación</h1>
 		<p>Prueba de descripción de una locación.</p>
 		<div>
@@ -121,7 +121,7 @@
 		</div>
 	</div>
 	<div class="itemLocacion">
-		<img src="https://ep01.epimg.net/sociedad/imagenes/2018/09/25/actualidad/1537861260_915743_1537864721_noticia_normal.jpg">
+		<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxTy55t1TMv5W7Y4D7z6lD9SX1IAEGwVQAVLUyF-8Ou63OZeTG">
 		<h1 class="h4"><i class='fas fa-map-marker-alt' style='font-size:17px'></i> Nombre locación</h1>
 		<p>Prueba de descripción de una locación.</p>
 		<div>
@@ -137,7 +137,7 @@
 		</div>
 	</div>
 	<div class="itemLocacion">
-		<img src="http://cdmxtravel.com/assets/cache/6f3ebe425120e7ee621966824bafee23/discover-990-parque-del-mestizaje-7_848x476_adaptiveResize.jpg">
+		<img src="https://images.misterlocation.com/images/listing_images/images/1249192/original/fotos_studio_flash_is_flash_201711023.jpg?1517403023">
 		<h1 class="h4"><i class='fas fa-map-marker-alt' style='font-size:17px'></i> Nombre locación</h1>
 		<p>Prueba de descripción de una locación.</p>
 		<div>

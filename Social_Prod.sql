@@ -57,3 +57,15 @@ CREATE TABLE subida_archivos (
 	activo TINYINT NOT NULL,
 	PRIMARY KEY(id)
 );
+
+CREATE TABLE notas (
+	id INT NOT NULL UNIQUE AUTO_INCREMENT,
+	grupo_id INT NOT NULL,
+	usuario_id INT NOT NULL,
+	icono VARCHAR(255) NOT NULL,
+	titulo VARCHAR(55) NOT NULL,
+	mensaje VARCHAR(255) NOT NULL,
+	fecha_envio DATETIME NOT NULL,
+	activo TINYINT NOT NULL,
+	PRIMARY KEY(id)
+);

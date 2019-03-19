@@ -131,7 +131,13 @@ Conexion::cerrar_conexion();
         </div>
         <?php //echo $alerta_grupo;?>
 
-
+        <div class="alert alert-warning">
+          <span class="closebtn" style="color: #85641D;" onclick="this.parentElement.style.display='none';">&times;</span> 
+          <strong><i class='  far fa-sticky-note' style='font-size:17px'></i>  Titulo</strong><br>
+          Prueba de texto para nota. 
+          <hr>
+          <label style="text-align: right;">10:00 pm  |  <strong>Pepe Buitrago</strong></label>
+        </div>
 
         <div class="alert alert-warning">
           <span class="closebtn" style="color: #85641D;" onclick="this.parentElement.style.display='none';">&times;</span> 
@@ -181,18 +187,24 @@ Conexion::cerrar_conexion();
             <div class="modal-body">
             <form method="post" action="index.php">
             <div class="dropdown">
-              <button style="border-style: ridge;" class="nav-link text-muted" data-toggle="dropdown">
-                    Tipo <i class='fa fa-users' style='font-size:20px'></i>
-                  </button>
+              <label class="">Titulo</label>
+              <input class="input100 inputText" type="text" name="nombre_grupo" placeholder="Ingresa un titulo">
               <div class="dropdown-menu">
-                <a class="dropdown-item nav-link text-muted" data-toggle="modal" data-target="#exampleModal">Nuevo Grupo&nbsp&nbsp<i class='far fa-edit' style='font-size:14px'></i></a>
-                <hr>
-                <div id="listaGrupos"></div>
+                <ul>
+                  <li>
+                    <i class='far fa-edit' style='font-size:20px'></i>
+                  </li>
+                  <li>
+                    <i class='far fa-edit' style='font-size:20px'></i>
+                  </li>
+                </ul>
               </div>
             </div>
             <hr>
             <label>Mensaje</label>
+            <br>
             <textarea style="border-style: ridge;" rows="5" class="input100 inputText" name="descripcion" placeholder="Ingresa un mensaje"></textarea>
+            <!--<button style="border-style: ridge;" class="btn btn-sm btn-outline-secondary" data-toggle="dropdown"><i class='far fa-edit' style='font-size:20px'></i></button> -->
             </div>
             <div class="modal-footer">
               <button type="button" class="btn colorOficial" data-dismiss="modal">Cancelar</button>

@@ -7,7 +7,7 @@ class RepositorioNota{
         if (isset($conexion)) {
             try {
                 $icono = "far fa-sticky-note";
-                $color = "Color null";
+                $color = "warning";
 
                 $sql = "INSERT INTO notas(grupo_id, usuario_id, icono, color, titulo, mensaje, fecha_envio, activo) VALUES(:grupo_id, :usuario_id, :icono, :color, :titulo, :mensaje, NOW(), 1)";
                 

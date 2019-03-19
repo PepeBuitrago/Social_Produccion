@@ -11,7 +11,7 @@
 	foreach ($notas as $fila) {
 		$usuario = RepositorioUsuario::obtener_usuario_por_id(Conexion::obtener_conexion(), $fila -> obtener_usuario());
 
-		?><div class="alert alert-warning">
+		?><div class="alert alert-<?php echo $fila -> obtener_color();?>">
           <span class="closebtn" style="color: #85641D;" onclick="this.parentElement.style.display='none';">&times;</span> 
           <strong><i class='<?php echo $fila -> obtener_icono(); ?>' style='font-size:17px'></i>  <?php echo $fila -> obtener_titulo(); ?></strong><br>
           <?php echo $fila -> obtener_mensaje(); ?> 

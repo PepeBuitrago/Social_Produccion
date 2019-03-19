@@ -26,8 +26,8 @@ body {
 a:hover {
     cursor: pointer;
 }
-.btn a:hover {
-    color: white;
+.btnW:hover {
+    color: white !important;
 }
 .inputText {
     border-bottom: 1px solid #6C757D;

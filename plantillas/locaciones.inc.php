@@ -2,7 +2,7 @@
 	<h1 style="color: #6C757D;" class="h2">Locaciones</h1>
 	<div class="btn-toolbar mb-2 mb-md-0">
 	    <div class="btn-group mr-2">
-	        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="<?php echo RUTA_CHAT;?>?g=<?php echo $_SESSION['grupo_usuario'];?>">Compartir&nbsp<i class='fas fa-map-marker-alt' style='font-size:17px'></i></a></button>
+	        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="<?php echo RUTA_CHAT;?>?g=<?php echo $_SESSION['grupo_usuario'];?>" class="btnW">Compartir&nbsp<i class='fas fa-map-marker-alt' style='font-size:17px'></i></a></button>
 	    </div>
 	 </div>
 </div>

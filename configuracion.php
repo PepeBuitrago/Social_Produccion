@@ -28,8 +28,8 @@ if (isset($_POST['guardar_cambios']) && !empty($_FILES['foto']['tmp_name'])) {
     $subida_correcta = 0;
   }
 
-  if($_FILES['foto']['size'] > 500000){
-    $alerta = "La imagen es superior a 500kb";
+  if($_FILES['foto']['size'] > 1000000){
+    $alerta = "La imagen no debe ser superior a 1 Mb";
     $subida_correcta = 0;
   }
 

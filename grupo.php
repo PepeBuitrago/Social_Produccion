@@ -123,7 +123,7 @@ Conexion::cerrar_conexion();
 
           <div style="position: absolute; left: 85%;" class="btn-toolbar mb-2 mb-md-0">
               <div class="btn-group mr-2">
-                <a data-toggle="modal" data-target="#exampleModal" class="btn btn-sm btn-outline-secondary">Nueva nota&nbsp<i class='far fa-edit' style='font-size:17px'></i></a>
+                <a data-toggle="modal" data-target="#exampleModal" class="btn btnW btn-sm btn-outline-secondary">Nueva nota&nbsp<i class='far fa-edit' style='font-size:17px'></i></a>
               </div>
           </div>
 
@@ -136,9 +136,9 @@ Conexion::cerrar_conexion();
         <div class="alert alert-warning">
           <span class="closebtn" style="color: #85641D;" onclick="this.parentElement.style.display='none';">&times;</span> 
           <strong><i class='fas fa-bullhorn' style='font-size:17px'></i>  Dirección:</strong><br>
-          Prueba de texto para nota. 
+          Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.
           <hr>
-          <label style="text-align: right;">10:00 pm</label>
+          <label style="text-align: right;">10:00 pm  |  <strong>Pepe Buitrago</strong></label>
         </div>
         
         <div class="alert alert-success">
@@ -146,7 +146,7 @@ Conexion::cerrar_conexion();
           <strong><i class='fas fa-palette' style='font-size:17px'></i>  Departamento de arte:</strong><br>
           Prueba de texto para nota. 
           <hr>
-          <label style="text-align: right;">10:00 pm</label>
+          <label style="text-align: right;">10:00 pm  |  <strong>Pepe Buitrago</strong></label>
         </div>
 
         <div class="alert alert-info">
@@ -154,7 +154,7 @@ Conexion::cerrar_conexion();
           <strong><i class='fas fa-theater-masks' style='font-size:17px'></i>  Casting:</strong><br>
           Prueba de texto para nota. 
           <hr>
-          <label style="text-align: right;">10:00 pm</label>
+          <label style="text-align: right;">10:00 pm  |  <strong>Pepe Buitrago</strong></label>
         </div>
 
         <div class="alert alert-danger">
@@ -162,7 +162,7 @@ Conexion::cerrar_conexion();
           <strong><i class='fas fa-exclamation' style='font-size:17px'></i>  Atención:</strong><br>
           Prueba de texto para nota. 
           <hr>
-          <label style="text-align: right;">10:00 pm</label>
+          <label style="text-align: right;">10:00 pm  |  <strong>Pepe Buitrago</strong></label>
         </div>
 
 
@@ -181,7 +181,7 @@ Conexion::cerrar_conexion();
             <div class="modal-body">
             <form method="post" action="index.php">
             <div class="dropdown">
-              <button class="nav-link text-muted" data-toggle="dropdown">
+              <button style="border-style: ridge;" class="nav-link text-muted" data-toggle="dropdown">
                     Tipo <i class='fa fa-users' style='font-size:20px'></i>
                   </button>
               <div class="dropdown-menu">
@@ -190,7 +190,9 @@ Conexion::cerrar_conexion();
                 <div id="listaGrupos"></div>
               </div>
             </div>
-            <textarea rows="5" class="input100 inputText" name="descripcion" placeholder="Ingresa un mensaje"></textarea>
+            <hr>
+            <label>Mensaje</label>
+            <textarea style="border-style: ridge;" rows="5" class="input100 inputText" name="descripcion" placeholder="Ingresa un mensaje"></textarea>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn colorOficial" data-dismiss="modal">Cancelar</button>

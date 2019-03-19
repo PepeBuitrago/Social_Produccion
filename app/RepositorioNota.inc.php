@@ -6,8 +6,10 @@ class RepositorioNota{
         
         if (isset($conexion)) {
             try {
-                $icono = "<i class='far fa-sticky-note' style='font-size:17px'></i>";
-                $sql = "INSERT INTO notas(grupo_id, usuario_id, icono, titulo, mensaje, fecha_envio, activo) VALUES(:grupo_id, :usuario_id, :icono, :titulo, :mensaje, NOW(), 1)";
+                $icono = "far fa-sticky-note";
+                $color = "Color null";
+
+                $sql = "INSERT INTO notas(grupo_id, usuario_id, icono, color, titulo, mensaje, fecha_envio, activo) VALUES(:grupo_id, :usuario_id, :icono, :color, :titulo, :mensaje, NOW(), 1)";
                 
                 $sentencia = $conexion -> prepare($sql);
                 
@@ -16,6 +18,7 @@ class RepositorioNota{
                 $sentencia -> bindParam(':titulo', $titulo, PDO::PARAM_STR);
                 $sentencia -> bindParam(':mensaje', $mensaje, PDO::PARAM_STR);
                 $sentencia -> bindParam(':icono', $icono, PDO::PARAM_STR);
+                $sentencia -> bindParam(':color', $color, PDO::PARAM_STR);
                 
                 $nota_insertada = $sentencia -> execute();
             } catch (PDOException $ex) {
@@ -24,6 +27,37 @@ class RepositorioNota{
         }
         
         return $nota_insertada;
+    }
+
+    public static function obtener_nota_por_grupo($conexion, $grupo) {
+        $notas = array();
+        
+        if (isset($conexion)) {
+            
+            try {
+                
+                include_once 'Nota.inc.php';
+                
+                $sql = "SELECT * FROM notas WHERE grupo_id =".$grupo;
+                
+                $sentencia = $conexion -> prepare($sql);
+                $sentencia -> execute();
+                
+                $resultado = $sentencia -> fetchAll();
+                
+                if (count($resultado)) {
+                    foreach ($resultado as $fila) {
+                        $notas[] = new Nota(
+                                $fila['id'], $fila['grupo_id'], $fila['usuario_id'], $fila['icono'], $fila['color'], $fila['titulo'], $fila['mensaje'], $fila['fecha_envio'], $fila['activo']
+                        );
+                    }
+                }                
+            }catch (PDOException $ex) {
+                print "ERROR" . $ex -> getMessage();
+            } 
+        }
+        
+        return $notas;
     }
 }
 ?>

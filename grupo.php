@@ -5,6 +5,7 @@ include_once 'app/ControlSesion.inc.php';
 include_once 'app/Redireccion.inc.php';
 include_once 'app/RepositorioUsuario.inc.php';
 include_once 'app/RepositorioGrupo.inc.php';
+include_once 'app/RepositorioNota.inc.php';
 
 if (!ControlSesion::sesion_iniciada()) {
     Redireccion::redirigir(RUTA_LOGIN);
@@ -16,6 +17,12 @@ $grupo = RepositorioGrupo::obtener_grupo_por_id(Conexion::obtener_conexion(), $_
 $usuario = RepositorioUsuario::obtener_usuario_por_id(Conexion::obtener_conexion(), $_GET['u']);
 $usuario -> cambiar_grupo($_GET['g']);
 RepositorioUsuario::actualizar_usuario(Conexion::obtener_conexion(),$usuario);
+
+if (isset($_POST['agregar_nota']) && isset($_GET['g']) && isset($_GET['u']) && $_GET['g'] != 0) {
+  if ($_POST['titulo'] != '' && $_POST['mensaje'] != '') {
+    RepositorioNota::insertar_nota(Conexion::obtener_conexion(), $_GET['u'], $_GET['g'], $_POST['titulo'], $_POST['mensaje']);
+  }
+}
 
 $alerta_grupo = '<div class="alert colorOficial">
           <span class="closebtn" onclick="this.parentElement.style.display=\'none\';">&times;</span> 
@@ -64,18 +71,18 @@ Conexion::cerrar_conexion();
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-muted" href="<?php echo RUTA_CHAT;?>?g=<?php echo $_SESSION['grupo_usuario'];?>">
+            <a class="nav-link text-muted" href="<?php echo RUTA_GRUPO.'?g='.$_GET['g'];?>&u=<?php echo $_GET['u'];?>&p=Notas">
               Notas  <i class='far fa-calendar-check' style='font-size:20px'></i>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-muted" href="<?php echo RUTA_CHAT;?>?g=<?php echo $_SESSION['grupo_usuario'];?>">
+            <a class="nav-link text-muted" href="<?php echo RUTA_GRUPO.'?g='.$_GET['g'];?>&u=<?php echo $_GET['u'];?>&p=Archivos">
               Archivos  <i class='far fa-folder-open' style='font-size:20px'></i>
             </a>
           </li>
           <hr>
           <li class="nav-item">
-            <a class="nav-link text-muted" href="<?php echo RUTA_CHAT;?>?g=<?php echo $_SESSION['grupo_usuario'];?>">
+            <a class="nav-link text-muted" href="<?php echo RUTA_GRUPO.'?g='.$_GET['g'];?>&u=<?php echo $_GET['u'];?>&p=">
               Añadir integrante  <i class='fas fa-user-plus' style='font-size:15px'></i>
             </a>
           </li>
@@ -121,55 +128,25 @@ Conexion::cerrar_conexion();
 
           </div>
 
-          <div style="position: absolute; left: 85%;" class="btn-toolbar mb-2 mb-md-0">
-              <div class="btn-group mr-2">
-                <a data-toggle="modal" data-target="#exampleModal" class="btn btnW btn-sm btn-outline-secondary">Nueva nota&nbsp<i class='far fa-edit' style='font-size:17px'></i></a>
-              </div>
-          </div>
-
           <br>
         </div>
-        <?php //echo $alerta_grupo;?>
+        <?php //echo $alerta_grupo;
 
-        <div class="alert alert-warning">
-          <span class="closebtn" style="color: #85641D;" onclick="this.parentElement.style.display='none';">&times;</span> 
-          <strong><i class='  far fa-sticky-note' style='font-size:17px'></i>  Titulo</strong><br>
-          Prueba de texto para nota. 
-          <hr>
-          <label style="text-align: right;">10:00 pm  |  <strong>Pepe Buitrago</strong></label>
-        </div>
+        if (isset($_GET['p'])) {
+          if ($_GET['p'] == "Archivos") {
+            include_once 'plantillas/archivos.inc.php';
+          }
+        }
 
-        <div class="alert alert-warning">
-          <span class="closebtn" style="color: #85641D;" onclick="this.parentElement.style.display='none';">&times;</span> 
-          <strong><i class='fas fa-bullhorn' style='font-size:17px'></i>  Dirección:</strong><br>
-          Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.  Prueba de texto para nota.
-          <hr>
-          <label style="text-align: right;">10:00 pm  |  <strong>Pepe Buitrago</strong></label>
-        </div>
+        if (isset($_GET['p'])) {
+          if ($_GET['p'] == "Notas") {
+            include_once 'plantillas/listaNotas.inc.php';
+          }
+        }
+
+        ?>
+
         
-        <div class="alert alert-success">
-          <span class="closebtn" style="color: #155724;" onclick="this.parentElement.style.display='none';">&times;</span> 
-          <strong><i class='fas fa-palette' style='font-size:17px'></i>  Departamento de arte:</strong><br>
-          Prueba de texto para nota. 
-          <hr>
-          <label style="text-align: right;">10:00 pm  |  <strong>Pepe Buitrago</strong></label>
-        </div>
-
-        <div class="alert alert-info">
-          <span class="closebtn" style="color: #0C5460;" onclick="this.parentElement.style.display='none';">&times;</span> 
-          <strong><i class='fas fa-theater-masks' style='font-size:17px'></i>  Casting:</strong><br>
-          Prueba de texto para nota. 
-          <hr>
-          <label style="text-align: right;">10:00 pm  |  <strong>Pepe Buitrago</strong></label>
-        </div>
-
-        <div class="alert alert-danger">
-          <span class="closebtn" style="color: #721C24;" onclick="this.parentElement.style.display='none';">&times;</span> 
-          <strong><i class='fas fa-exclamation' style='font-size:17px'></i>  Atención:</strong><br>
-          Prueba de texto para nota. 
-          <hr>
-          <label style="text-align: right;">10:00 pm  |  <strong>Pepe Buitrago</strong></label>
-        </div>
 
 
 
@@ -185,10 +162,10 @@ Conexion::cerrar_conexion();
               </button>
             </div>
             <div class="modal-body">
-            <form method="post" action="index.php">
+            <form method="post" action="<?php echo RUTA_GRUPO.'?g='.$_GET['g'];?>&u=<?php echo $_GET['u'] . '&p=Notas';?>">
             <div class="dropdown">
               <label class="">Titulo</label>
-              <input class="input100 inputText" type="text" name="nombre_grupo" placeholder="Ingresa un titulo">
+              <input class="input100 inputText" type="text" name="titulo" placeholder="Ingresa un titulo">
               <div class="dropdown-menu">
                 <ul>
                   <li>
@@ -203,12 +180,12 @@ Conexion::cerrar_conexion();
             <hr>
             <label>Mensaje</label>
             <br>
-            <textarea style="border-style: ridge;" rows="5" class="input100 inputText" name="descripcion" placeholder="Ingresa un mensaje"></textarea>
+            <textarea style="border-style: ridge;" rows="5" class="input100 inputText" name="mensaje" placeholder="Ingresa un mensaje"></textarea>
             <!--<button style="border-style: ridge;" class="btn btn-sm btn-outline-secondary" data-toggle="dropdown"><i class='far fa-edit' style='font-size:20px'></i></button> -->
             </div>
             <div class="modal-footer">
               <button type="button" class="btn colorOficial" data-dismiss="modal">Cancelar</button>
-              <button type="submit" class="btn colorOficial" name="crear_grupo">Siguiente</button>
+              <button type="submit" class="btn colorOficial" name="agregar_nota">Siguiente</button>
             </div>
             </form>
           </div>
@@ -225,18 +202,18 @@ Conexion::cerrar_conexion();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript">
-        function loadGrupos() {
+        function loadNotas() {
           var req = new XMLHttpRequest();
           req.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-             document.getElementById("listaGrupos").innerHTML = req.responseText;
+             document.getElementById("listaNotas").innerHTML = req.responseText;
             }
           };
-          req.open("GET", "app/ListaGrupos.inc.php", true);
+          req.open("GET", "app/notas.inc.php?g=<?php echo $_SESSION['grupo_usuario'] . '&u=' . $_SESSION['nombre_usuario'];?>", true);
           req.send();
         }
 
-        setInterval(function(){loadChat();}, 1000);
+        setInterval(function(){loadNotas();}, 1000);
       </script>
   </body>
 </html>

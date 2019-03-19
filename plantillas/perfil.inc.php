@@ -2,7 +2,7 @@
 <div class="jumbotron">
 	<div class="row">
 		<div style="margin: 0px 40px 0px 40px;">
-			<img class="imagenConfig" src="images/perfiles/me.jpg">
+			<img class="imagenConfig" src="<?php echo $usuario -> obtener_foto(); ?>">
 		</div>
 		<div style="display: flex; align-items: center;">
 			<div>

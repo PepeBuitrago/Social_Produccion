@@ -26,6 +26,7 @@ $alerta_activo = '<div style="background-color: #6ABC6E;" class="alert">
 			  	<a href="#" style="color: white;"><strong>¡Hola '.$_SESSION['nombre_usuario'].'!</strong> tu cuenta aun espera a ser activada.</a>
 			  	</div>';
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 	<head>
@@ -50,18 +51,16 @@ $alerta_activo = '<div style="background-color: #6ABC6E;" class="alert">
 	</head>
 	<body>
     <nav class="navbar navbar-expand-lg navbar-dark colorOficial fixed-top">
-    	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
-	      <span class="navbar-toggler-icon"></span>
-	      </button>
-	  <a class="col-sm-3 col-md-2 mr-0" href="<?php echo SERVIDOR;?>?p=Perfil"><img style="border-radius: 50%; width: 30px;" src="<?php echo $usuario -> obtener_foto(); ?>">&nbsp&nbsp&nbsp<?php echo $_SESSION['nombre_usuario']; ?></a>
-	  <div class="collapse navbar-collapse" id="navbarsExample08">
-	  	<input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-		  <ul class="navbar-nav px-3">
-		    <li class="nav-item text-nowrap">
-		      <a class="nav-link" href="logout.php">Salir <i class='fas fa-sign-out-alt' style='font-size:15px'></i></a>
-		    </li>
-		  </ul>
-	  </div>
+    	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+	 	<a class="col-sm-3 col-md-2 mr-0" href="<?php echo SERVIDOR;?>?p=Perfil"><img style="border-radius: 50%; width: 30px;" src="<?php echo $usuario -> obtener_foto(); ?>">&nbsp&nbsp&nbsp<?php echo $_SESSION['nombre_usuario']; ?></a>
+	  	<div class="collapse navbar-collapse" id="navbarsExample08">
+	  		<input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+		  	<ul class="navbar-nav px-3">
+		    	<li class="nav-item text-nowrap">
+		      		<a class="nav-link" href="logout.php">Salir <i class='fas fa-sign-out-alt' style='font-size:15px'></i></a>
+		    	</li>
+		  	</ul>
+	  	</div>
 	</nav>
 
 <div class="container-fluid">
@@ -88,11 +87,6 @@ $alerta_activo = '<div style="background-color: #6ABC6E;" class="alert">
           <li class="nav-item">
             <a class="nav-link text-muted" href="<?php echo SERVIDOR;?>?p=Locaciones">
               Locaciones  <i class='fas fa-map-marked-alt' style='font-size:20px'></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-muted" href="<?php echo RUTA_CHAT;?>">
-              Chat  <i class='far fa-comment' style='font-size:20px'></i>
             </a>
           </li>
         </ul>

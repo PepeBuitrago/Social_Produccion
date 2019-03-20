@@ -35,7 +35,6 @@ Conexion::cerrar_conexion();
 		<link rel="stylesheet" type="text/css" href="css/util.css">
 		<link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/chat.css">
-
 		<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
 	</head>
 
@@ -43,7 +42,7 @@ Conexion::cerrar_conexion();
     <nav class="navbar navbar-dark fixed-top colorOficial flex-md-nowrap p-0">
   	  <ul class="navbar-nav px-3">
   	    <li class="nav-item text-nowrap">
-  	      <a class="nav-link" href="<?php echo SERVIDOR?>"><i class='fas fa-chevron-left' style='font-size:27px'></i></a>
+  	      <a class="nav-link" href="<?php echo RUTA_GRUPO.'?g='.$_GET['g'].'&u='.$_GET['u'];?>"><i class='fas fa-chevron-left' style='font-size:27px'></i></a>
   	    </li>
   	  </ul>
   	</nav>

@@ -66,7 +66,7 @@ Conexion::cerrar_conexion();
         <hr>
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link text-muted" href="<?php echo RUTA_CHAT;?>?g=<?php echo $_SESSION['grupo_usuario'];?>">
+            <a class="nav-link text-muted" href="<?php echo RUTA_CHAT.'?g='.$_SESSION['grupo_usuario'].'&u='.$_SESSION['id_usuario'];?>">
               Chat  <i class='  far fa-comment' style='font-size:20px'></i>
             </a>
           </li>

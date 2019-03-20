@@ -1,14 +1,13 @@
 
 <form method="post" enctype="multipart/form-data">
-
+  <div class="jumbotron">
   <div class="imagen_contenedor">
-    <img id="imgUser" class="imagenConfig" src="<?php echo $usuario -> obtener_foto();?>">
+    <img id="imgUser" class="imagenConfig img-thumbnail" src="<?php echo $usuario -> obtener_foto();?>">
     <br>
       <label class="btn btn-default btn-file colorOficial" for="foto"><i class='fas fa-edit' style='font-size:15px'></i></label>
     <input type="file" name="foto" id="foto">
   </div>
-
-<br><br>
+  </div>
   Nombre&nbsp&nbsp
   <input class="inputText" type="text" name="nombre" placeholder="<?php echo $usuario -> obtener_nombre();?>">
   <br>

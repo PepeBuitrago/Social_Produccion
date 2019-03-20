@@ -15,6 +15,9 @@
   Apellidos&nbsp&nbsp
   <input class="inputText" type="text" name="apellido" placeholder="<?php echo $usuario -> obtener_apellido();?>">
   <br>
+  Descripción&nbsp&nbsp
+  <input class="inputText" type="text" name="descripcion" placeholder="<?php echo $usuario -> obtener_descripcion();?>">
+  <br>
   Email&nbsp&nbsp
   <input class="inputText" type="email" name="email" placeholder="<?php echo $usuario -> obtener_email();?>">
   <br>

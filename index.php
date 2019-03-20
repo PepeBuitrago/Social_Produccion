@@ -163,7 +163,6 @@ if(!$usuario -> esta_activo()){
 Conexion::cerrar_conexion();
 ?>
 		
-		
 
 
 	    </main>

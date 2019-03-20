@@ -9,7 +9,7 @@
 
 <div class="containerLocacion">
 	<div class="itemLocacion">
-		<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/2017_Santiago_de_Chile_-_Bancos_y_senderos_en_el_Parque_Forestal_%28a_la_altura_de_la_calle_Coronel_Santiago_Bueras%29.jpg/275px-2017_Santiago_de_Chile_-_Bancos_y_senderos_en_el_Parque_Forestal_%28a_la_altura_de_la_calle_Coronel_Santiago_Bueras%29.jpg">
+		<img src="https://lorempixel.com/400/300">
 		<h1 class="h4"><i class='fas fa-map-marker-alt' style='font-size:17px'></i> Nombre locación</h1>
 		<p>Prueba de descripción de una locación.</p>
 		<div>

@@ -4,7 +4,7 @@
   <div class="imagen_contenedor">
     <img id="imgUser" class="imagenConfig img-thumbnail" src="<?php echo $usuario -> obtener_foto();?>">
     <br>
-      <label class="btn btn-default btn-file colorOficial" for="foto"><i class='fas fa-edit' style='font-size:15px'></i></label>
+      <label class="btn btn-default btn-file colorOficial" for="foto"  data-toggle="modal" data-target="#imgModal"><i class='fas fa-edit' style='font-size:15px'></i></label>
     <input type="file" name="foto" id="foto">
   </div>
   </div>

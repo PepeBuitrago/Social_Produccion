@@ -84,6 +84,10 @@ Conexion::cerrar_conexion();
     <link rel="stylesheet" type="text/css" href="css/main.css">
 
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery.Jcrop.min.js"></script>
+    <link rel="stylesheet" href="css/jquery.Jcrop.min.css" type="text/css" />
   </head>
   <body onload="">
     <nav class="navbar navbar-dark fixed-top colorOficial flex-md-nowrap p-0">
@@ -151,6 +155,36 @@ Conexion::cerrar_conexion();
         </div>
         
 
+
+
+
+
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="imgModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Nuevo grupo de trabajo</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="modal-body" style="text-align: center;" id="imgCuter">
+                <img style="width: 400px;" src="" id="imgTarget">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn colorOficial" data-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn colorOficial" name="crear_grupo">Siguiente</button>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
       
 
 
@@ -160,19 +194,21 @@ Conexion::cerrar_conexion();
 
     </div>
   </div>
-    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript">
 
         $('#foto').on("change", function(){
-          
-          var preview = document.querySelector('img');
+
+          var preview = document.getElementById('imgUser');
+          var previewCut = document.getElementById('imgTarget');
           var file    = document.querySelector('input[type=file]').files[0];
+          var imgHtml = '<img style="width: 400px;" src="" id="imgTarget">';
           var reader = new FileReader();
 
           reader.onloadend = function () {
             preview.src = reader.result;
+            previewCut.src = reader.result;
           }
 
           if (file) {
@@ -180,22 +216,23 @@ Conexion::cerrar_conexion();
           } else {
             preview.src = "";
           }
+          
+          /*jQuery(function($) {
+
+              $('#imgTarget').Jcrop({
+                  onSelect:    showCoords,
+                  bgColor:     'black',
+                  bgOpacity:   .4,
+                  setSelect:   [ 200, 200, 0, 0 ],
+                  aspectRatio: 1 / 1
+              });
+          });
+
+          function showCoords(c){
+            alert('X: ' + c.x + ' / Y: ' + c.y);
+          };*/
 
         });
-
-
-        function loadGrupos() {
-          var req = new XMLHttpRequest();
-          req.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-             document.getElementById("listaGrupos").innerHTML = req.responseText;
-            }
-          };
-          req.open("GET", "app/ListaGrupos.inc.php", true);
-          req.send();
-        }
-
-        //setInterval(function(){loadChat();}, 1000);
       </script>
   </body>
 </html>

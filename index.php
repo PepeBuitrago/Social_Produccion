@@ -52,7 +52,7 @@ $alerta_activo = '<div style="background-color: #6ABC6E;" class="alert">
 	<body>
     <nav class="navbar navbar-expand-lg navbar-dark colorOficial fixed-top">
     	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-	 	<a class="col-sm-3 col-md-2 mr-0" href="<?php echo SERVIDOR;?>?p=Perfil"><img style="border-radius: 50%; width: 30px;" src="<?php echo $usuario -> obtener_foto(); ?>">&nbsp&nbsp&nbsp<?php echo $_SESSION['nombre_usuario']; ?></a>
+	 	<a class="col-sm-3 col-md-2 mr-0" href="<?php echo RUTA_CONFIGURACION?>?config=perfil"><img style="border-radius: 50%; width: 30px;" src="<?php echo $usuario -> obtener_foto(); ?>">&nbsp&nbsp&nbsp<?php echo $_SESSION['nombre_usuario']; ?></a>
 	  	<div class="collapse navbar-collapse" id="navbarsExample08">
 	  		<input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
 		  	<ul class="navbar-nav px-3">
@@ -145,7 +145,7 @@ if (isset($_GET['p'])) {
 		include_once 'plantillas/perfil.inc.php';
 	}
 }else{
-		?><br><div class="jumbotron colorOficial">
+		?><br><div class="jumbotron" style="background-image: linear-gradient(#718791, #99AFBA); color: white;">
 		    <h1><i class='fas fa-bullhorn'></i>  Social Producción</h1>
 		  </div><?php
 }

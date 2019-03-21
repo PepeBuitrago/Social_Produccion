@@ -14,44 +14,46 @@ Conexion::abrir_conexion();
 $alerta = false;
 $usuario = RepositorioUsuario::obtener_usuario_por_id(Conexion::obtener_conexion(), $_SESSION['id_usuario']);
 
-if (isset($_POST['guardar_cambios']) && !empty($_FILES['foto']['tmp_name'])) {
-
-  $directorio = DIRECTORIO_RAIZ.'/images/perfiles/';
-  $carpeta_objetivo = $directorio.basename($_FILES['foto']['name']);
-  $subida_correcta = 1;
-  $tipo_imagen = pathinfo($carpeta_objetivo, PATHINFO_EXTENSION);
-
-  $comprobacion = getimagesize($_FILES['foto']['tmp_name']);
-  if ($comprobacion != false) {
+if (isset($_POST['guardar_cambios'])) {
+  if (!empty($_FILES['foto']['tmp_name'])) {
+    $directorio = DIRECTORIO_RAIZ.'/images/perfiles/';
+    $carpeta_objetivo = $directorio.basename($_FILES['foto']['name']);
     $subida_correcta = 1;
-  }else{
-    $subida_correcta = 0;
-  }
+    $tipo_imagen = pathinfo($carpeta_objetivo, PATHINFO_EXTENSION);
 
-  if($_FILES['foto']['size'] > 1000000){
-    $alerta = "La imagen no debe ser superior a 1 Mb";
-    $subida_correcta = 0;
-  }
+    $comprobacion = getimagesize($_FILES['foto']['tmp_name']);
+    if ($comprobacion != false) {
+      $subida_correcta = 1;
+    }else{
+      $subida_correcta = 0;
+    }
 
-  if ($tipo_imagen != "jpg" && $tipo_imagen != "png" && $tipo_imagen != "jpeg" && $tipo_imagen != "gif") {
-    $alerta = "Sólo se admiten los formatos JPG, JPEG, PNG y GIF";
-    $subida_correcta = 0;
-  }
-  
-  if ($subida_correcta == 0) {
-    $alerta = "Tu archivo no puede subirse";
-  } else {
-    if (move_uploaded_file($_FILES['foto']['tmp_name'],
-    DIRECTORIO_RAIZ."/images/perfiles/".basename($_FILES['foto']['name']))) {
-      $subida_correcta = 2;
-      $usuario -> cambiar_foto("images/perfiles/".basename($_FILES['foto']['name']));
-      RepositorioUsuario::actualizar_usuario(Conexion::obtener_conexion(),$usuario);
-      RepositorioArchivo::insertar_subida(Conexion::obtener_conexion(), $usuario -> obtener_id(), "images/perfiles/".basename($_FILES['foto']['name']), basename($_FILES['foto']['name']), $tipo_imagen, $_FILES['foto']['size']);
-      $alerta = "La imagen ha sido subida correctamente.";
-    }else {
-      $alerta = "Ha ocurrido un error al subir la imagen.";
+    if($_FILES['foto']['size'] > 1000000){
+      $alerta = "La imagen no debe ser superior a 1 Mb";
+      $subida_correcta = 0;
+    }
+
+    if ($tipo_imagen != "jpg" && $tipo_imagen != "png" && $tipo_imagen != "jpeg" && $tipo_imagen != "gif") {
+      $alerta = "Sólo se admiten los formatos JPG, JPEG, PNG y GIF";
+      $subida_correcta = 0;
+    }
+    
+    if ($subida_correcta == 0) {
+      $alerta = "Tu archivo no puede subirse";
+    } else {
+      if (move_uploaded_file($_FILES['foto']['tmp_name'],
+      DIRECTORIO_RAIZ."/images/perfiles/".basename($_FILES['foto']['tmp_name']))) {
+        $subida_correcta = 2;
+        $usuario -> cambiar_foto("images/perfiles/".basename($_FILES['foto']['tmp_name']));
+        RepositorioUsuario::actualizar_usuario(Conexion::obtener_conexion(),$usuario);
+        RepositorioArchivo::insertar_subida(Conexion::obtener_conexion(), $usuario -> obtener_id(), "images/perfiles/".basename($_FILES['foto']['tmp_name']), basename($_FILES['foto']['name']), $tipo_imagen, $_FILES['foto']['size']);
+        $alerta = "La imagen ha sido subida correctamente.";
+      }else {
+        $alerta = "Ha ocurrido un error al subir la imagen.";
+      }
     }
   }
+  
 }
 
 $alerta_imagen = '<div class="alert colorOficial">
@@ -172,8 +174,10 @@ Conexion::cerrar_conexion();
               </button>
             </div>
             <div class="modal-body">
-              <div class="modal-body" style="text-align: center;" id="imgCuter">
+              <div class="modal-body imgCuter">
                 <img style="width: 400px;" src="" id="imgTarget">
+                <hr>
+                <button class="btn colorOficial" onclick="loadCut();">Cortar</button>
               </div>
             </div>
             <div class="modal-footer">
@@ -200,26 +204,35 @@ Conexion::cerrar_conexion();
 
         $('#foto').on("change", function(){
 
+          var x, y, w, h;
           var preview = document.getElementById('imgUser');
           var previewCut = document.getElementById('imgTarget');
           var file    = document.querySelector('input[type=file]').files[0];
-          var imgHtml = '<img style="width: 400px;" src="" id="imgTarget">';
           var reader = new FileReader();
 
           reader.onloadend = function () {
             preview.src = reader.result;
             previewCut.src = reader.result;
+            
           }
-
           if (file) {
             reader.readAsDataURL(file);
           } else {
             preview.src = "";
           }
-          
-          /*jQuery(function($) {
 
+
+          if (previewCut.width != previewCut.height) {
+            alert('w: '+previewCut.width+' h: '+previewCut.height);
+            //loadCut();
+          }
+
+        });
+
+        function loadCut() {
+          jQuery(function($) {
               $('#imgTarget').Jcrop({
+                  addClass: 'jcrop-centered',
                   onSelect:    showCoords,
                   bgColor:     'black',
                   bgOpacity:   .4,
@@ -229,10 +242,12 @@ Conexion::cerrar_conexion();
           });
 
           function showCoords(c){
-            alert('X: ' + c.x + ' / Y: ' + c.y);
-          };*/
-
-        });
+            x = c.x;
+            y = c.y;
+            w = c.w;
+            h = c.h;
+          };
+        }
       </script>
   </body>
 </html>

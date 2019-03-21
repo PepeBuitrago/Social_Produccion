@@ -122,35 +122,19 @@ a:hover {
 .form-control-dark:focus {
     border-color: transparent;
     box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
-    background-color: #80939C;
+    background-color: rgba(255, 255, 255, .1);
 }
-
 .dropdown a:active {
     color: white !important;
     background: #718791;
 }
-
 .imagenConfig {
     border-radius: 50%;
     width: 200px;
 }
-
-.jumbotron{
+.jumbotron {
     margin-top: 15px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 div.imagen_contenedor {
     position: relative;
 }
@@ -163,7 +147,6 @@ div.imagen_contenedor label {
     cursor: pointer;
     box-shadow: 1px 1px 1px #3B474D;
 }
-
 .imagen_contenedor input[type=file] {
     height: 1px;
     width: 1px;
@@ -172,14 +155,6 @@ div.imagen_contenedor label {
     cursor: inherit;
     display: block;
 }
-
-
-
-
-
-
-
-
 .alert {
     padding: 20px;
 }
@@ -199,32 +174,25 @@ div.imagen_contenedor label {
 .closebtn:hover {
     color: black;
 }
-
-
-
-
-
-
-.itemLocacion{
+.itemLocacion {
     border-radius: 5px;
     padding: 10px;
     background: #f2f2f2;
     box-shadow: 1px 1px 1px #9E9E9E;
 }
-
-.itemLocacion img{
+.itemLocacion img {
     max-width: 100%;
 }
-
-.containerLocacion{
+.containerLocacion {
     padding-top: 25px;
     display: grid;
     grid-template-columns: repeat(auto-fill, 250px);
     grid-gap: 15px;
     justify-content: center;
 }
-
-
-
-
-
+.jcrop-centered {
+    display: inline-block;
+}
+.imgCuter {
+    text-align: center;
+}

@@ -14,7 +14,13 @@ Conexion::abrir_conexion();
 $alerta = false;
 $usuario = RepositorioUsuario::obtener_usuario_por_id(Conexion::obtener_conexion(), $_SESSION['id_usuario']);
 
+
+if (isset($_POST['guardar_clave'])) {
+  print($_POST['pass']);
+}
+
 if (isset($_POST['guardar_cambios'])) {
+
   if (!empty($_FILES['foto']['tmp_name'])) {
     $directorio = DIRECTORIO_RAIZ.'/images/perfiles/';
     $carpeta_objetivo = $directorio.basename($_FILES['foto']['name']);
@@ -153,6 +159,9 @@ Conexion::cerrar_conexion();
           if ($_GET['config'] == 'perfil'){
             include_once 'plantillas/configuracion_perfil.php';
           }
+          if ($_GET['config'] == 'seguridad'){
+            include_once 'plantillas/configuracion_clave.php';
+          }
           ?>
         </div>
         
@@ -168,16 +177,16 @@ Conexion::cerrar_conexion();
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Nuevo grupo de trabajo</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Cortar imagen</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
               <div class="modal-body imgCuter">
-                <img style="width: 400px;" src="" id="imgTarget">
+                <img style="max-width: 100%;" src="" id="imgTarget">
                 <hr>
-                <button class="btn colorOficial" onclick="loadCut();">Cortar</button>
+                <button class="btn colorOficial" onclick="loadCut();">Cortar  <i class='fas fa-crop-alt' style='font-size:15px'></i></button>
               </div>
             </div>
             <div class="modal-footer">
@@ -205,6 +214,7 @@ Conexion::cerrar_conexion();
         $('#foto').on("change", function(){
 
           var x, y, w, h;
+          var jcrop_api;
           var preview = document.getElementById('imgUser');
           var previewCut = document.getElementById('imgTarget');
           var file    = document.querySelector('input[type=file]').files[0];
@@ -213,18 +223,19 @@ Conexion::cerrar_conexion();
           reader.onloadend = function () {
             preview.src = reader.result;
             previewCut.src = reader.result;
+
+            if (previewCut.width != previewCut.height) {
+              //$("#imgModal").modal();
+              alert('w: '+previewCut.width+' h: '+previewCut.height);
+              //loadCut();
+            }
             
           }
+
           if (file) {
             reader.readAsDataURL(file);
           } else {
             preview.src = "";
-          }
-
-
-          if (previewCut.width != previewCut.height) {
-            alert('w: '+previewCut.width+' h: '+previewCut.height);
-            //loadCut();
           }
 
         });

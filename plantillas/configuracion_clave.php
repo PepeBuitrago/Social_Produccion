@@ -1,24 +1,10 @@
 
-<form method="post" enctype="multipart/form-data">
-  <div class="jumbotron" style="background-image: linear-gradient(#718791, #99AFBA); color: white;">
-  <div class="imagen_contenedor">
-    <img id="imgUser" class="imagenConfig img-thumbnail" src="<?php echo $usuario -> obtener_foto();?>">
-    <br>
-      <label class="btn btn-default btn-file colorOficial editImg" for="foto"  data-toggle="modal" data-target="#imgModal"><i class='fas fa-edit' style='font-size:15px'></i></label>
-    <input type="file" name="foto" id="foto">
-  </div>
-  </div>
-  Nombre&nbsp&nbsp
-  <input class="inputText" type="text" name="nombre" placeholder="<?php echo $usuario -> obtener_nombre();?>">
+<form method="post" action="<?php echo RUTA_CONFIGURACION?>?config=seguridad">
+  Nueva contraseña&nbsp&nbsp
+  <input class="inputText" type="password" name="pass">
   <br>
-  Apellidos&nbsp&nbsp
-  <input class="inputText" type="text" name="apellido" placeholder="<?php echo $usuario -> obtener_apellido();?>">
-  <br>
-  Descripción&nbsp&nbsp
-  <input class="inputText" type="text" name="descripcion" placeholder="<?php echo $usuario -> obtener_descripcion();?>">
-  <br>
-  Email&nbsp&nbsp
-  <input class="inputText" type="email" name="email" placeholder="<?php echo $usuario -> obtener_email();?>">
+  Repetir contraseña&nbsp&nbsp
+  <input class="inputText" type="password" name="pass2">
   <br>
   <hr>
 
@@ -43,15 +29,16 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn colorOficial" data-dismiss="modal">Cancelar</button>
-              <button type="submit" class="btn colorOficial" name="guardar_cambios">Confirmar</button>
+              <button type="submit" class="btn colorOficial" name="guardar_clave">Confirmar</button>
             </div>
           </div>
         </div>
       </div>
+
 </form>
+
 <div class="container-login100-form-btn">
     <button style="position: relative; left: 80%;" class="login100-form-btn colorOficial" data-toggle="modal" data-target="#exampleModal">
     Guardar cambios
     </button>
 </div>
-<hr>

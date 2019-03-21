@@ -147,6 +147,9 @@ div.imagen_contenedor label {
     cursor: pointer;
     box-shadow: 1px 1px 1px #3B474D;
 }
+.editImg:hover {
+    background: white !important;
+}
 .imagen_contenedor input[type=file] {
     height: 1px;
     width: 1px;

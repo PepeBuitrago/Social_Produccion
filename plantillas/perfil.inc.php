@@ -1,5 +1,5 @@
 <br>
-<div class="jumbotron">
+<div class="jumbotron" style="background-image: linear-gradient(#718791, #99AFBA); color: white;">
 	<div class="row">
 		<div style="margin: 0px 40px 0px 40px;">
 			<img class="imagenConfig img-thumbnail" src="<?php echo $usuario -> obtener_foto(); ?>">
@@ -7,7 +7,7 @@
 		<div style="display: flex; align-items: center;">
 			<div>
 				<h1><?php echo $_SESSION['nombre_usuario']; ?></h1> 
-				<p><?php echo $usuario -> obtener_descripcion(); ?></p>
+				<p style="color: white;"><?php echo $usuario -> obtener_descripcion(); ?></p>
 				<div style="width: 50%;">
 					<p>
 						<span class="w3-tag w3-small w3-theme-d5">Admin</span>

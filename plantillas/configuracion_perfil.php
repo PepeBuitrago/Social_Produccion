@@ -1,8 +1,8 @@
 
 <form method="post" enctype="multipart/form-data">
-  <div class="jumbotron" style="background-image: linear-gradient(#718791, #99AFBA); color: white;">
+  <div class="jumbotron">
   <div class="imagen_contenedor">
-    <img id="imgUser" class="imagenConfig img-thumbnail" src="<?php echo $usuario -> obtener_foto();?>">
+    <img id="imgUser" width="200" height="200" class="imagenConfig img-thumbnail" src="<?php echo $usuario -> obtener_foto();?>">
     <br>
       <label class="btn btn-default btn-file colorOficial editImg" for="foto"><i class='fas fa-edit' style='font-size:15px'></i></label>
     <input type="file" name="foto" id="foto">

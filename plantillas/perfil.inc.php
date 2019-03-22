@@ -1,8 +1,8 @@
 <br>
-<div class="jumbotron" style="background-image: linear-gradient(#718791, #99AFBA); color: white;">
+<div class="jumbotron">
 	<div class="row">
 		<div style="margin: 0px 40px 0px 40px;">
-			<img class="imagenConfig img-thumbnail" src="<?php echo $usuario -> obtener_foto(); ?>">
+			<img class="imagenConfig img-thumbnail" width="200" src="<?php echo $usuario -> obtener_foto(); ?>">
 		</div>
 		<div style="display: flex; align-items: center;">
 			<div>

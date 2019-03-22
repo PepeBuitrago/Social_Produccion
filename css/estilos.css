@@ -130,7 +130,6 @@ a:hover {
 }
 .imagenConfig {
     border-radius: 50%;
-    width: 200px;
 }
 .jumbotron {
     margin-top: 15px;
@@ -195,12 +194,13 @@ div.imagen_contenedor label {
 .containerLocacion {
     padding-top: 25px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, 250px);
+    grid-template-columns: repeat(auto-fill, 300px);
     grid-gap: 15px;
     justify-content: center;
 }
 .jcrop-centered {
     display: inline-block;
+    max-width: 100%;
 }
 .imgCuter {
     text-align: center;

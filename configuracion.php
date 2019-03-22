@@ -33,7 +33,6 @@ if (isset($_POST['guardar_clave'])) {
 }
 
 if (isset($_POST['guardar_cambios'])) {
-
   if (!empty($_FILES['foto']['tmp_name'])) {
     $directorio = DIRECTORIO_RAIZ.'/images/perfiles/';
     $carpeta_objetivo = $directorio.basename($_FILES['foto']['name']);
@@ -60,6 +59,20 @@ if (isset($_POST['guardar_cambios'])) {
     if ($subida_correcta == 0) {
       $alerta = "Tu archivo no puede subirse";
     } else {
+/*
+      $targ_w = $targ_h = 200;
+      $jpeg_quality = 90;
+
+      $src = $_FILES['foto']['tmp_name'];
+      $img_r = imagecreatefromjpeg($src);
+      $dst_r = ImageCreateTrueColor($targ_w, $targ_h);
+
+      imagecopyresampled($dst_r,$img_r,0,0,$_POST['x'],$_POST['y'],
+          $targ_w,$targ_h,$_POST['w'],$_POST['h']);
+
+      header('Content-type: image/jpeg');
+      imagejpeg($dst_r, DIRECTORIO_RAIZ."/images/perfiles/".basename($_FILES['foto']['tmp_name']), $jpeg_quality);
+*/
       if (move_uploaded_file($_FILES['foto']['tmp_name'],
       DIRECTORIO_RAIZ."/images/perfiles/".basename($_FILES['foto']['tmp_name']))) {
         $subida_correcta = 2;
@@ -197,25 +210,20 @@ Conexion::cerrar_conexion();
             </div>
             <div class="modal-body">
               <div class="modal-body imgCuter">
-                <img style="max-width: 100%;" src="" id="imgTarget">
-                <hr>
-                <button class="btn colorOficial" onclick="loadCut();">Cortar  <i class='fas fa-crop-alt' style='font-size:15px'></i></button>
-                <button class="btn colorOficial" onclick="cancelCut();">Cancelar corte</button>
+                <img src="" style="max-width: 100%;" id="imgTarget">
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn colorOficial" data-dismiss="modal">Cancelar</button>
-              <button type="submit" class="btn colorOficial" name="cortar_img">Siguiente</button>
+              <button type="button" class="btn colorOficial" data-dismiss="modal" onclick="cancelCut();">Cancelar</button>
+              <button type="text" class="btn colorOficial" name="cortar_img" onclick="loadCut();">Cortar  <i class='fas fa-crop-alt' style='font-size:15px'></i></button>
             </div>
             </form>
           </div>
         </div>
       </div>
 
-      
 
-
-      </main>
+</main>
       
 
 
@@ -226,20 +234,20 @@ Conexion::cerrar_conexion();
     <script type="text/javascript">
 
         $('#foto').on("change", function(){
-          var jcrop_api;
           var preview = document.getElementById('imgUser');
           var previewCut = document.getElementById('imgTarget');
           var file    = document.querySelector('input[type=file]').files[0];
           var reader = new FileReader();
 
           reader.onloadend = function () {
-            preview.src = reader.result;
-            
-            if (preview.width != preview.height) {
-              
+            //preview.src = reader.result;
+            previewCut.src = reader.result;
+
+            if (previewCut.width != previewCut.height) {
               $("#imgModal").modal();
-              previewCut.src = reader.result;
-              //loadCut();
+              if (previewCut.src != "") {
+                //loadCut();
+              }
             }
             
           }
@@ -264,10 +272,6 @@ Conexion::cerrar_conexion();
               });
           });
 
-          $('#imgTarget').Jcrop(options,function(){
-              jcrop_api = this;
-          });
-
           function showCoords(c){
             $('#x').val(c.x);
             $('#y').val(c.y);
@@ -277,8 +281,17 @@ Conexion::cerrar_conexion();
         }
 
         function cancelCut(){
-          jcrop_api.destroy();
+          $('#imgTarget').data('Jcrop').destroy();
         }
+
+        $("#imgModal").on('hidden.bs.modal', function () {
+          cancelCut();
+        });
+
+        $("#imgModal").on('show.bs.modal', function () {
+          //loadCut();
+        });
+
       </script>
   </body>
 </html>

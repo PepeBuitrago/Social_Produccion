@@ -179,12 +179,10 @@ Conexion::cerrar_conexion();
 					<br>
 					<textarea rows="3" class="input100 inputText" name="descripcion" placeholder="Ingresa una descripción corta (Opcional)"></textarea>
 					<div class="input-group">
-    				<input type="text" class="form-control" placeholder="Buscar participantes">
-    				<div class="input-group-btn">
-      				<button class="btn btn-default colorOficial" type="submit">
-        			<i class='fas fa-user-plus' style='font-size:15px'></i>
-      				</button>
-    				</div>
+    					<input type="text" class="form-control" placeholder="Buscar participantes">
+	    				<div class="input-group-btn">
+	      					<button class="btn btn-default colorOficial" type="button"><i class='fas fa-user-plus' style='font-size:15px'></i></button>
+	    				</div>
   					</div>
 			      </div>
 			      <div class="modal-footer">

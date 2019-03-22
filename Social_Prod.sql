@@ -71,3 +71,17 @@ CREATE TABLE notas (
 	activo TINYINT NOT NULL,
 	PRIMARY KEY(id)
 );
+
+CREATE TABLE locaciones (
+	id INT NOT NULL UNIQUE AUTO_INCREMENT,
+	usuario INT NOT NULL,
+	nombre VARCHAR(25) NOT NULL,
+	descripcion VARCHAR(140)NOT NULL,
+	url_foto VARCHAR(255) NOT NULL,
+	coor_x INT NOT NULL,
+	coor_y INT NOT NULL,
+	coor_z INT NOT NULL,
+	fecha_subida DATETIME NOT NULL,
+	activo TINYINT NOT NULL,
+	PRIMARY KEY(id)
+);

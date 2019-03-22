@@ -75,6 +75,7 @@ if (isset($_POST['guardar_cambios'])) {
 */
       if (move_uploaded_file($_FILES['foto']['tmp_name'],
       DIRECTORIO_RAIZ."/images/perfiles/".basename($_FILES['foto']['tmp_name']))) {
+        
         $subida_correcta = 2;
         $usuario -> cambiar_foto("images/perfiles/".basename($_FILES['foto']['tmp_name']));
         RepositorioUsuario::actualizar_usuario(Conexion::obtener_conexion(),$usuario);
@@ -134,7 +135,7 @@ Conexion::cerrar_conexion();
 
 <div class="container-fluid">
   <div class="row">
-    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+    <nav class="col-md-3 bg-light sidebar">
       <div class="sidebar-sticky">
         <hr>
         <ul class="nav flex-column">
@@ -165,11 +166,7 @@ Conexion::cerrar_conexion();
 
 
 
-      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-        <div class="d-flex flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <i class='fas fa-cogs h1' style="color: #6C757D; margin-right: 20px;"></i>
-          <h1 style="color: #6C757D;" class="h3">Configuración</h1>
-        </div>
+      <main role="main" class="col-md-9 ml-sm-auto">
         <?php 
         if(!$usuario -> esta_activo()){
           echo $alerta_activo;
@@ -179,16 +176,16 @@ Conexion::cerrar_conexion();
           if (isset($subida_correcta)) {
             echo $alerta_imagen;
           }
-        } ?>
-        <div style="text-align: center;">
-          <?php
-          if ($_GET['config'] == 'perfil'){
-            include_once 'plantillas/configuracion_perfil.php';
-          }
-          if ($_GET['config'] == 'seguridad'){
-            include_once 'plantillas/configuracion_clave.php';
-          }
-          ?>
+        }
+
+        if ($_GET['config'] == 'perfil'){
+          include_once 'plantillas/configuracion_perfil.php';
+        }
+        
+        if ($_GET['config'] == 'seguridad'){
+          include_once 'plantillas/configuracion_clave.php';
+        }
+        ?>
         </div>
         
 
@@ -242,9 +239,9 @@ Conexion::cerrar_conexion();
           reader.onloadend = function () {
             //preview.src = reader.result;
             previewCut.src = reader.result;
-
+            $("#imgModal").modal();
             if (previewCut.width != previewCut.height) {
-              $("#imgModal").modal();
+              
               if (previewCut.src != "") {
                 //loadCut();
               }

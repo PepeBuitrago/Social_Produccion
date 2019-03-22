@@ -1,3 +1,8 @@
+<div class="d-flex flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <i class='fas fa-shield-alt h1' style="color: #6C757D; margin-right: 20px;"></i>
+  <h1 style="color: #6C757D;" class="h3">Cambiar contraseña</h1>
+</div>
+<div style="text-align: center;">
 <p style="width: 60%; margin: 0px 20%;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab quisquam dolore explicabo dignissimos non quidem facilis molestiae quia ex doloribus fuga, libero, ad nisi fugiat eligendi saepe eaque aperiam? Explicabo.</p><br><br>
 <form method="post" action="<?php echo RUTA_CONFIGURACION?>?config=seguridad">
   Nueva contraseña&nbsp&nbsp

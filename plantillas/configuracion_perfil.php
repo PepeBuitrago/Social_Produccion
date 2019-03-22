@@ -1,12 +1,16 @@
-
+<div class="d-flex flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <i class='fas fa-cogs h1' style="color: #6C757D; margin-right: 20px;"></i>
+  <h1 style="color: #6C757D;" class="h3">Configuración de perfil</h1>
+</div>
+<div style="text-align: center;">
 <form method="post" enctype="multipart/form-data">
   <div class="jumbotron">
-  <div class="imagen_contenedor">
-    <img id="imgUser" width="200" height="200" class="imagenConfig img-thumbnail" src="<?php echo $usuario -> obtener_foto();?>">
-    <br>
-      <label class="btn btn-default btn-file colorOficial editImg" for="foto"><i class='fas fa-edit' style='font-size:15px'></i></label>
-    <input type="file" name="foto" id="foto">
-  </div>
+    <div class="imagen_contenedor">
+      <img id="imgUser" width="200" height="200" class="imagenConfig img-thumbnail" src="<?php echo $usuario -> obtener_foto();?>">
+      <br>
+        <label class="btn btn-default btn-file colorOficial editImg" for="foto"><i class='fas fa-edit' style='font-size:15px'></i></label>
+      <input type="file" name="foto" id="foto">
+    </div>
   </div>
   Nombre&nbsp&nbsp
   <input class="inputText" type="text" name="nombre" placeholder="<?php echo $usuario -> obtener_nombre();?>">
@@ -14,12 +18,12 @@
   Apellidos&nbsp&nbsp
   <input class="inputText" type="text" name="apellido" placeholder="<?php echo $usuario -> obtener_apellido();?>">
   <br>
-  Descripción&nbsp&nbsp
-  <input class="inputText" type="text" name="descripcion" placeholder="<?php echo $usuario -> obtener_descripcion();?>">
-  <br>
   Email&nbsp&nbsp
   <input class="inputText" type="email" name="email" placeholder="<?php echo $usuario -> obtener_email();?>">
   <br>
+  Descripción&nbsp&nbsp
+  <br>
+  <textarea style="padding: 5px;" class="inputText" type="text" name="descripcion" placeholder="<?php echo $usuario -> obtener_descripcion();?>"></textarea>
   <hr>
   <input type="hidden" id="x" name="x" />
   <input type="hidden" id="y" name="y" />

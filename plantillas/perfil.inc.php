@@ -7,7 +7,7 @@
 		<div style="display: flex; align-items: center;">
 			<div>
 				<h1><?php echo $_SESSION['nombre_usuario']; ?></h1> 
-				<p style="color: white;"><?php echo $usuario -> obtener_descripcion(); ?></p>
+				<p><?php echo $usuario -> obtener_descripcion(); ?></p>
 				<div style="width: 50%;">
 					<p>
 						<span class="w3-tag w3-small w3-theme-d5">Admin</span>

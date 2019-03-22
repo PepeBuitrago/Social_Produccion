@@ -2,16 +2,23 @@
 	<h1 style="color: #6C757D;" class="h2">Locaciones</h1>
 	<div class="btn-toolbar mb-2 mb-md-0">
 	    <div class="btn-group mr-2">
-	        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="<?php echo RUTA_CHAT;?>?g=<?php echo $_SESSION['grupo_usuario'];?>" class="btnW">Compartir&nbsp<i class='fas fa-map-marker-alt' style='font-size:17px'></i></a></button>
+	        <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#locacionModal">Compartir&nbsp<i class='fas fa-map-marker-alt' style='font-size:17px'></i></button>
 	    </div>
 	 </div>
 </div>
 
-<div class="containerLocacion">
-	<div class="itemLocacion">
+<?php
+if(isset($_POST['compartir_locacion'])){
+	if(RepositorioLocaciones::insertar_locacion(Conexion::obtener_conexion(), $_SESSION['id_usuario'], $_POST['nombre_locacion'], $_POST['descripcion_locacion'], $_POST['foto_locacion'], $_POST['coor_x'], $_POST['coor_y'])){
+ 	echo '<script type="text/javascript">alert("Locacion agregada");</script>';}
+}
+?>
+
+<div class="containerLocacion" id="listaLocaciones">
+	<!--<div class="itemLocacion">
 		<img src="https://lorempixel.com/400/300">
 		<h1 class="h4"><i class='fas fa-map-marker-alt' style='font-size:17px'></i> Nombre locación</h1>
-		<p>Prueba de descripción de una locación.</p>
+		<p>Prueba de descripción de una locación. Prueba de descripción de una locación.</p>
 		<div>
 			<p>
 				<span class="w3-tag w3-small w3-theme-d5">tag</span>
@@ -23,134 +30,64 @@
 				<span class="w3-tag w3-small w3-theme-l1">tag</span>
 			</p>
 		</div>
-	</div>
-	<div class="itemLocacion">
-		<img src="https://ep01.epimg.net/sociedad/imagenes/2018/09/25/actualidad/1537861260_915743_1537864721_noticia_normal.jpg">
-		<h1 class="h4"><i class='fas fa-map-marker-alt' style='font-size:17px'></i> Nombre locación</h1>
-		<p>Prueba de descripción de una locación.</p>
-		<div>
-			<p>
-				<span class="w3-tag w3-small w3-theme-d5">tag</span>
-				<span class="w3-tag w3-small w3-theme-d4">tag</span>
-				<span class="w3-tag w3-small w3-theme-d3">tag</span>
-				<span class="w3-tag w3-small w3-theme-d2">tag</span>
-				<span class="w3-tag w3-small w3-theme-d1"> tag</span>
-				<span class="w3-tag w3-small w3-theme">tag</span>
-				<span class="w3-tag w3-small w3-theme-l1">tag</span>
-			</p>
-		</div>
-	</div>
-	<div class="itemLocacion">
-		<img src="http://cdmxtravel.com/assets/cache/6f3ebe425120e7ee621966824bafee23/discover-990-parque-del-mestizaje-7_848x476_adaptiveResize.jpg">
-		<h1 class="h4"><i class='fas fa-map-marker-alt' style='font-size:17px'></i> Nombre locación</h1>
-		<p>Prueba de descripción de una locación.</p>
-		<div>
-			<p>
-				<span class="w3-tag w3-small w3-theme-d5">tag</span>
-				<span class="w3-tag w3-small w3-theme-d4">tag</span>
-				<span class="w3-tag w3-small w3-theme-d3">tag</span>
-				<span class="w3-tag w3-small w3-theme-d2">tag</span>
-				<span class="w3-tag w3-small w3-theme-d1"> tag</span>
-				<span class="w3-tag w3-small w3-theme">tag</span>
-				<span class="w3-tag w3-small w3-theme-l1">tag</span>
-			</p>
-		</div>
-	</div>
-	<div class="itemLocacion">
-		<img src="http://www.spainisculture.com/export/sites/cultura/multimedia/galerias/Lugares_de_celebracion/teatro_principal_interior_vitoria_o_cquintas.jpg_1306973099.jpg">
-		<h1 class="h4"><i class='fas fa-map-marker-alt' style='font-size:17px'></i> Nombre locación</h1>
-		<p>Prueba de descripción de una locación.</p>
-		<div>
-			<p>
-				<span class="w3-tag w3-small w3-theme-d5">tag</span>
-				<span class="w3-tag w3-small w3-theme-d4">tag</span>
-				<span class="w3-tag w3-small w3-theme-d3">tag</span>
-				<span class="w3-tag w3-small w3-theme-d2">tag</span>
-				<span class="w3-tag w3-small w3-theme-d1"> tag</span>
-				<span class="w3-tag w3-small w3-theme">tag</span>
-				<span class="w3-tag w3-small w3-theme-l1">tag</span>
-			</p>
-		</div>
-	</div>
-	<div class="itemLocacion">
-		<img src="https://www.dzoom.org.es/wp-content/uploads/2017/05/estudio-casero-2-810x540.jpg">
-		<h1 class="h4"><i class='fas fa-map-marker-alt' style='font-size:17px'></i> Nombre locación</h1>
-		<p>Prueba de descripción de una locación.</p>
-		<div>
-			<p>
-				<span class="w3-tag w3-small w3-theme-d5">tag</span>
-				<span class="w3-tag w3-small w3-theme-d4">tag</span>
-				<span class="w3-tag w3-small w3-theme-d3">tag</span>
-				<span class="w3-tag w3-small w3-theme-d2">tag</span>
-				<span class="w3-tag w3-small w3-theme-d1"> tag</span>
-				<span class="w3-tag w3-small w3-theme">tag</span>
-				<span class="w3-tag w3-small w3-theme-l1">tag</span>
-			</p>
-		</div>
-	</div>
-	<div class="itemLocacion">
-		<img src="https://media-cdn.tripadvisor.com/media/photo-s/0e/ab/ec/62/sala-grande-ph-filippo.jpg">
-		<h1 class="h4"><i class='fas fa-map-marker-alt' style='font-size:17px'></i> Nombre locación</h1>
-		<p>Prueba de descripción de una locación.</p>
-		<div>
-			<p>
-				<span class="w3-tag w3-small w3-theme-d5">tag</span>
-				<span class="w3-tag w3-small w3-theme-d4">tag</span>
-				<span class="w3-tag w3-small w3-theme-d3">tag</span>
-				<span class="w3-tag w3-small w3-theme-d2">tag</span>
-				<span class="w3-tag w3-small w3-theme-d1"> tag</span>
-				<span class="w3-tag w3-small w3-theme">tag</span>
-				<span class="w3-tag w3-small w3-theme-l1">tag</span>
-			</p>
-		</div>
-	</div>
-	<div class="itemLocacion">
-		<img src="https://www.esmadrid.com/sites/default/files/styles/content_type_full/public/recursosturisticos/infoturistica/gran_teatro_bankia.jpg?itok=r3y0UhvY">
-		<h1 class="h4"><i class='fas fa-map-marker-alt' style='font-size:17px'></i> Nombre locación</h1>
-		<p>Prueba de descripción de una locación.</p>
-		<div>
-			<p>
-				<span class="w3-tag w3-small w3-theme-d5">tag</span>
-				<span class="w3-tag w3-small w3-theme-d4">tag</span>
-				<span class="w3-tag w3-small w3-theme-d3">tag</span>
-				<span class="w3-tag w3-small w3-theme-d2">tag</span>
-				<span class="w3-tag w3-small w3-theme-d1"> tag</span>
-				<span class="w3-tag w3-small w3-theme">tag</span>
-				<span class="w3-tag w3-small w3-theme-l1">tag</span>
-			</p>
-		</div>
-	</div>
-	<div class="itemLocacion">
-		<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxTy55t1TMv5W7Y4D7z6lD9SX1IAEGwVQAVLUyF-8Ou63OZeTG">
-		<h1 class="h4"><i class='fas fa-map-marker-alt' style='font-size:17px'></i> Nombre locación</h1>
-		<p>Prueba de descripción de una locación.</p>
-		<div>
-			<p>
-				<span class="w3-tag w3-small w3-theme-d5">tag</span>
-				<span class="w3-tag w3-small w3-theme-d4">tag</span>
-				<span class="w3-tag w3-small w3-theme-d3">tag</span>
-				<span class="w3-tag w3-small w3-theme-d2">tag</span>
-				<span class="w3-tag w3-small w3-theme-d1"> tag</span>
-				<span class="w3-tag w3-small w3-theme">tag</span>
-				<span class="w3-tag w3-small w3-theme-l1">tag</span>
-			</p>
-		</div>
-	</div>
-	<div class="itemLocacion">
-		<img src="https://images.misterlocation.com/images/listing_images/images/1249192/original/fotos_studio_flash_is_flash_201711023.jpg?1517403023">
-		<h1 class="h4"><i class='fas fa-map-marker-alt' style='font-size:17px'></i> Nombre locación</h1>
-		<p>Prueba de descripción de una locación.</p>
-		<div>
-			<p>
-				<span class="w3-tag w3-small w3-theme-d5">tag</span>
-				<span class="w3-tag w3-small w3-theme-d4">tag</span>
-				<span class="w3-tag w3-small w3-theme-d3">tag</span>
-				<span class="w3-tag w3-small w3-theme-d2">tag</span>
-				<span class="w3-tag w3-small w3-theme-d1"> tag</span>
-				<span class="w3-tag w3-small w3-theme">tag</span>
-				<span class="w3-tag w3-small w3-theme-l1">tag</span>
-			</p>
-		</div>
-	</div>
+	</div>-->
+	
 </div>
+
 <hr>
+
+
+<!-- Modal -->
+			<div class="modal fade" id="locacionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 style="color: #6C757D;" class="modal-title" id="exampleModalLabel"><i class='fas fa-map-marked-alt' style='font-size:30px'></i>  |  Compartir locación</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			      <form method="post" action="index.php?p=Locaciones">
+			      	<label class="">Nombre</label>
+					<input class="input100 inputText" type="text" name="nombre_locacion" placeholder="Ingresa un nombre" required="true">
+					<br>
+					<label class="">Descripción</label>
+					<br>
+					<textarea rows="3" class="input100 inputText" name="descripcion_locacion" placeholder="Ingresa una descripción corta" required="true"></textarea>
+					<label class="" for="foto_locacion">Foto</label>
+					<input type="file" name="foto_locacion" id="foto_locacion" required="true">
+					<hr>
+					<input type="hidden" name="coor_x" id="coor_x">
+					<input type="hidden" name="coor_y" id="coor_y">
+					<div class="input-group">
+    					<input type="text" class="form-control" placeholder="Agregar etiquetas">
+	    				<div class="input-group-btn">
+	      					<button class="btn btn-default colorOficial" type="button"><i class='fas fa-tags' style='font-size:15px'></i></button>
+	    				</div>
+  					</div>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn colorOficial" data-dismiss="modal">Cancelar</button>
+			        <button type="submit" class="btn colorOficial" name="compartir_locacion">Siguiente</button>
+			      </div>
+			      </form>
+			    </div>
+			  </div>
+			</div>
+
+
+<script type="text/javascript">
+		function loadSitios() {
+          var req = new XMLHttpRequest();
+          req.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+             document.getElementById("listaLocaciones").innerHTML = req.responseText;
+            }
+          };
+          req.open("GET", "app/locacion.inc.php", true);
+          req.send();
+        }
+        loadSitios();
+        //setInterval(function(){loadSitios();}, 1000);
+</script>

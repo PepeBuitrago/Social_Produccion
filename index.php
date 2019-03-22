@@ -5,6 +5,7 @@ include_once 'app/ControlSesion.inc.php';
 include_once 'app/Redireccion.inc.php';
 include_once 'app/RepositorioUsuario.inc.php';
 include_once 'app/RepositorioGrupo.inc.php';
+include_once 'app/RepositorioLocaciones.inc.php';
 
 if (!ControlSesion::sesion_iniciada()) {
     Redireccion::redirigir(RUTA_LOGIN);
@@ -165,7 +166,7 @@ Conexion::cerrar_conexion();
 			  <div class="modal-dialog" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <h5 class="modal-title" id="exampleModalLabel">Nuevo grupo de trabajo</h5>
+			        <h5 style="color: #6C757D;" class="modal-title" id="exampleModalLabel"><i class='fas fa-users' style='font-size:30px'></i>  |  Nuevo grupo de trabajo</h5>
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 			          <span aria-hidden="true">&times;</span>
 			        </button>
@@ -173,7 +174,7 @@ Conexion::cerrar_conexion();
 			      <div class="modal-body">
 			      <form method="post" action="index.php">
 			      	<label class="">Nombre del grupo</label>
-					<input class="input100 inputText" type="text" name="nombre_grupo" placeholder="Ingresa un nombre">
+					<input class="input100 inputText" type="text" name="nombre_grupo" placeholder="Ingresa un nombre" required="true">
 					<br>
 					<label class="">Descripción</label>
 					<br>
@@ -212,6 +213,19 @@ Conexion::cerrar_conexion();
 	      }
 
 	      setInterval(function(){loadGrupos();}, 1000);
+
+	      $("#locacionModal").on('show.bs.modal', function () {
+				if ("geolocation" in navigator){ //check geolocation available 
+				    //try to get user current location using getCurrentPosition() method
+				    navigator.geolocation.getCurrentPosition(function(position){ 
+				            console.log("Latitud: "+position.coords.latitude+"\nLongitud: "+ position.coords.longitude);
+				            $('#coor_x').val(position.coords.longitude);
+				            $('#coor_y').val(position.coords.latitude);
+				        });
+				}else{
+				    alert('Tu navegador no soporta la geolocalización.');
+				}	
+		    });
 	    </script>
 	</body>
 </html>

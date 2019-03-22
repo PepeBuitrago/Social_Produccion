@@ -16,7 +16,20 @@ $usuario = RepositorioUsuario::obtener_usuario_por_id(Conexion::obtener_conexion
 
 
 if (isset($_POST['guardar_clave'])) {
-  print($_POST['pass']);
+  if($_POST['clave1'] == $_POST['clave2']){
+    //convertir en transaccion
+    print $clave_cifrada = password_hash($_POST['clave1'], PASSWORD_DEFAULT);
+    $clave_actualizada = RepositorioUsuario::actualizar_password(Conexion::obtener_conexion(), $usuario -> obtener_id(), $clave_cifrada);
+    //eliminar solicitud de recuperación de contraseña
+
+    //redirigir a notificacion de actualizacion correcta y ofrecer link a login
+    if ($clave_actualizada) {
+      Redireccion::redirigir(RUTA_LOGIN);
+    } else {
+      //informar del error
+      echo 'ERROR';
+    }
+  }
 }
 
 if (isset($_POST['guardar_cambios'])) {
@@ -187,11 +200,12 @@ Conexion::cerrar_conexion();
                 <img style="max-width: 100%;" src="" id="imgTarget">
                 <hr>
                 <button class="btn colorOficial" onclick="loadCut();">Cortar  <i class='fas fa-crop-alt' style='font-size:15px'></i></button>
+                <button class="btn colorOficial" onclick="cancelCut();">Cancelar corte</button>
               </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn colorOficial" data-dismiss="modal">Cancelar</button>
-              <button type="submit" class="btn colorOficial" name="crear_grupo">Siguiente</button>
+              <button type="submit" class="btn colorOficial" name="cortar_img">Siguiente</button>
             </div>
             </form>
           </div>
@@ -212,8 +226,6 @@ Conexion::cerrar_conexion();
     <script type="text/javascript">
 
         $('#foto').on("change", function(){
-
-          var x, y, w, h;
           var jcrop_api;
           var preview = document.getElementById('imgUser');
           var previewCut = document.getElementById('imgTarget');
@@ -222,11 +234,11 @@ Conexion::cerrar_conexion();
 
           reader.onloadend = function () {
             preview.src = reader.result;
-            previewCut.src = reader.result;
-
-            if (previewCut.width != previewCut.height) {
-              //$("#imgModal").modal();
-              alert('w: '+previewCut.width+' h: '+previewCut.height);
+            
+            if (preview.width != preview.height) {
+              
+              $("#imgModal").modal();
+              previewCut.src = reader.result;
               //loadCut();
             }
             
@@ -252,12 +264,20 @@ Conexion::cerrar_conexion();
               });
           });
 
+          $('#imgTarget').Jcrop(options,function(){
+              jcrop_api = this;
+          });
+
           function showCoords(c){
-            x = c.x;
-            y = c.y;
-            w = c.w;
-            h = c.h;
+            $('#x').val(c.x);
+            $('#y').val(c.y);
+            $('#w').val(c.w);
+            $('#h').val(c.h);
           };
+        }
+
+        function cancelCut(){
+          jcrop_api.destroy();
         }
       </script>
   </body>

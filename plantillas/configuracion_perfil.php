@@ -4,7 +4,7 @@
   <div class="imagen_contenedor">
     <img id="imgUser" class="imagenConfig img-thumbnail" src="<?php echo $usuario -> obtener_foto();?>">
     <br>
-      <label class="btn btn-default btn-file colorOficial editImg" for="foto"  data-toggle="modal" data-target="#imgModal"><i class='fas fa-edit' style='font-size:15px'></i></label>
+      <label class="btn btn-default btn-file colorOficial editImg" for="foto"><i class='fas fa-edit' style='font-size:15px'></i></label>
     <input type="file" name="foto" id="foto">
   </div>
   </div>
@@ -21,7 +21,10 @@
   <input class="inputText" type="email" name="email" placeholder="<?php echo $usuario -> obtener_email();?>">
   <br>
   <hr>
-
+  <input type="hidden" id="x" name="x" />
+  <input type="hidden" id="y" name="y" />
+  <input type="hidden" id="w" name="w" />
+  <input type="hidden" id="h" name="h" />
 
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">

@@ -50,12 +50,11 @@ if (isset($_POST['login'])) {
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
 	      <span class="navbar-toggler-icon"></span>
 	      </button>
-
-	      <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
-	        <ul class="navbar-nav">
-	          <li class="nav-item active nav-link">
+			<div class="nav-item active nav-link">
 	            SOCIAL PRODUCCIÓN  <span class="sr-only">(current)</span>
-	          </li>
+	        </div>
+	      <div class="collapse navbar-collapse" id="navbarsExample08">
+	        <ul class="navbar-nav">
 	          <li class="nav-item">
 	            <a class="nav-link" href="<?php echo RUTA_REGISTRO?>">Registrarse</a>
 	          </li>

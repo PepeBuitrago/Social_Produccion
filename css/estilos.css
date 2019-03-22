@@ -134,6 +134,7 @@ a:hover {
 }
 .jumbotron {
     margin-top: 15px;
+    padding: 70px;
 }
 div.imagen_contenedor {
     position: relative;
@@ -146,6 +147,11 @@ div.imagen_contenedor label {
     border-radius: 50%;
     cursor: pointer;
     box-shadow: 1px 1px 1px #3B474D;
+}
+@media only screen and (max-width: 600px) {
+    .imgUser {
+        display: none;
+    }
 }
 .editImg:hover {
     background: white !important;

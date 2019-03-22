@@ -1,10 +1,10 @@
-
+<p style="width: 60%; margin: 0px 20%;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab quisquam dolore explicabo dignissimos non quidem facilis molestiae quia ex doloribus fuga, libero, ad nisi fugiat eligendi saepe eaque aperiam? Explicabo.</p><br><br>
 <form method="post" action="<?php echo RUTA_CONFIGURACION?>?config=seguridad">
   Nueva contraseña&nbsp&nbsp
-  <input class="inputText" type="password" name="pass">
+  <input class="inputText" type="password" name="clave1" placeholder="Ingresa una clave">
   <br>
   Repetir contraseña&nbsp&nbsp
-  <input class="inputText" type="password" name="pass2">
+  <input class="inputText" type="password" name="clave2" placeholder="Repite la clave">
   <br>
   <hr>
 

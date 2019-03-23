@@ -53,9 +53,9 @@ $alerta_activo = '<div style="background-color: #6ABC6E;" class="alert">
 	</head>
 	<body>
     <nav class="navbar navbar-expand-lg navbar-dark colorOficial fixed-top">
-    	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 	 	<a class="col-sm-auto col-md-3 imgUser" href="<?php echo RUTA_CONFIGURACION?>?config=perfil"><img style="border-radius: 50%; width: 30px;" src="<?php echo $usuario -> obtener_foto(); ?>">&nbsp&nbsp&nbsp<?php echo $_SESSION['nombre_usuario']; ?></a>
-	  	<div class="collapse navbar-collapse" id="navbarsExample08">
+	 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+	  	<div class="collapse navbar-collapse">
 	  		<input class="form-control form-control-dark w-100" type="text" placeholder="Buscar" aria-label="Search">
 		  	<ul class="navbar-nav px-3">
 		    	<li class="nav-item text-nowrap">
@@ -67,7 +67,7 @@ $alerta_activo = '<div style="background-color: #6ABC6E;" class="alert">
 
 <div class="container-fluid">
   <div class="row">
-    <nav class="col-md-3 bg-light sidebar">
+    <nav class="col-md-3 bg-light sidebar navbar-collapse" id="navbarsExample08">
       <div class="sidebar-sticky">
       	<hr>
         <ul class="nav flex-column">
@@ -113,11 +113,16 @@ $alerta_activo = '<div style="background-color: #6ABC6E;" class="alert">
             	Configuración  <i class='fas fa-cogs' style='font-size:20px'></i>
             	</a>
 			</li>
+			<li class="nav-item">
+			    <a class="nav-link text-muted" href="logout.php">
+            	Cerrar sesion  <i class='fas fa-sign-out-alt' style='font-size:20px'></i>
+            	</a>
+			</li>
         </ul>
       </div>
     </nav>
 
-	    <main role="main" class="col-md-9 ml-sm-auto">
+	<main role="main" class="col-md-9 ml-sm-auto">
 	      
 
 

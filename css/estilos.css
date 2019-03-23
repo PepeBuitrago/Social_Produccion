@@ -91,7 +91,7 @@ a:hover {
  */
 
 [role="main"] {
-    padding-top: 133px;
+    padding-top: 40px;
     /* Space for fixed navbar */
 }
 @media (min-width: 768px) {
@@ -133,7 +133,7 @@ a:hover {
 }
 .jumbotron {
     margin-top: 15px;
-    padding: 70px;
+    padding: 20px;
 }
 div.imagen_contenedor {
     position: relative;

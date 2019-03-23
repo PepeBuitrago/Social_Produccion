@@ -168,6 +168,14 @@ Conexion::cerrar_conexion();
 
       <main role="main" class="col-md-9 ml-sm-auto">
         <?php 
+        if ($_GET['config'] == 'perfil'){
+          include_once 'plantillas/configuracion_perfil.php';
+        }
+        
+        if ($_GET['config'] == 'seguridad'){
+          include_once 'plantillas/configuracion_clave.php';
+        }
+
         if(!$usuario -> esta_activo()){
           echo $alerta_activo;
         }
@@ -176,14 +184,6 @@ Conexion::cerrar_conexion();
           if (isset($subida_correcta)) {
             echo $alerta_imagen;
           }
-        }
-
-        if ($_GET['config'] == 'perfil'){
-          include_once 'plantillas/configuracion_perfil.php';
-        }
-        
-        if ($_GET['config'] == 'seguridad'){
-          include_once 'plantillas/configuracion_clave.php';
         }
         ?>
         </div>

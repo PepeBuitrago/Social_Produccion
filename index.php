@@ -6,6 +6,7 @@ include_once 'app/Redireccion.inc.php';
 include_once 'app/RepositorioUsuario.inc.php';
 include_once 'app/RepositorioGrupo.inc.php';
 include_once 'app/RepositorioLocaciones.inc.php';
+include_once 'app/RepositorioArchivo.inc.php';
 
 if (!ControlSesion::sesion_iniciada()) {
     Redireccion::redirigir(RUTA_LOGIN);

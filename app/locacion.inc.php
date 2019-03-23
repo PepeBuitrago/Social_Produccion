@@ -10,7 +10,7 @@
 foreach ($locaciones as $fila) {
 ?>
 <div class="itemLocacion">
-	<img src="https://lorempixel.com/400/300">
+	<img src="<?php echo $fila -> obtener_foto(); ?>">
 	<h1 class="h4"><i class='fas fa-map-marker-alt' style='font-size:17px'></i> <?php echo $fila -> obtener_nombre(); ?></h1>
 	<p style="max-width: 100%;"><?php echo $fila -> obtener_descripcion(); ?></p>
 	<div>

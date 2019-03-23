@@ -6,7 +6,7 @@ class RepositorioLocaciones{
         
         if (isset($conexion)) {
             try {
-                $foto = "https://lorempixel.com/400/300";
+                
                 $sql = "INSERT INTO locaciones(usuario, nombre, descripcion, url_foto, coor_x, coor_y, coor_z, fecha_subida, activo) VALUES(:usuario, :nombre, :descripcion, :url_foto, :coor_x, :coor_y, 1, NOW(), 1)";
                 
                 $sentencia = $conexion -> prepare($sql);
@@ -14,7 +14,7 @@ class RepositorioLocaciones{
                 $sentencia -> bindParam(':usuario', $usuario, PDO::PARAM_STR);
                 $sentencia -> bindParam(':nombre', $nombre, PDO::PARAM_STR);
                 $sentencia -> bindParam(':descripcion', $descripcion, PDO::PARAM_STR);
-                $sentencia -> bindParam(':url_foto', $foto, PDO::PARAM_STR);
+                $sentencia -> bindParam(':url_foto', $url_foto, PDO::PARAM_STR);
                 $sentencia -> bindParam(':coor_x', $coor_x, PDO::PARAM_STR);
                 $sentencia -> bindParam(':coor_y', $coor_y, PDO::PARAM_STR);
                 

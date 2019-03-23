@@ -123,6 +123,5 @@ if(isset($_POST['compartir_locacion'])){
           req.open("GET", "app/locacion.inc.php", true);
           req.send();
         }
-        loadSitios();
-        //setInterval(function(){loadSitios();}, 1000);
+        setInterval(function(){loadSitios();}, 1000);
 </script>

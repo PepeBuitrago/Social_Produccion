@@ -3,7 +3,7 @@
   <h1 style="color: #6C757D;" class="h3">Configuración de perfil</h1>
 </div>
 <div style="text-align: center;">
-<form method="post" enctype="multipart/form-data">
+<form method="post" action="<?php echo RUTA_CONFIGURACION?>?config=perfil" enctype="multipart/form-data">
   <div class="jumbotron">
     <div class="imagen_contenedor">
       <img id="imgUser" width="200" height="200" class="imagenConfig img-thumbnail" src="<?php echo $usuario -> obtener_foto();?>">

@@ -17,10 +17,8 @@ $usuario = RepositorioUsuario::obtener_usuario_por_id(Conexion::obtener_conexion
 
 if (isset($_POST['guardar_clave'])) {
   if($_POST['clave1'] == $_POST['clave2']){
-    //convertir en transaccion
     print $clave_cifrada = password_hash($_POST['clave1'], PASSWORD_DEFAULT);
     $clave_actualizada = RepositorioUsuario::actualizar_password(Conexion::obtener_conexion(), $usuario -> obtener_id(), $clave_cifrada);
-    //eliminar solicitud de recuperación de contraseña
 
     //redirigir a notificacion de actualizacion correcta y ofrecer link a login
     if ($clave_actualizada) {
@@ -59,28 +57,25 @@ if (isset($_POST['guardar_cambios'])) {
     if ($subida_correcta == 0) {
       $alerta = "Tu archivo no puede subirse";
     } else {
-/*
-      $targ_w = $targ_h = 200;
-      $jpeg_quality = 90;
+
+      $targ_w = $targ_h = 800;
+      $jpeg_quality = 80;
 
       $src = $_FILES['foto']['tmp_name'];
       $img_r = imagecreatefromjpeg($src);
       $dst_r = ImageCreateTrueColor($targ_w, $targ_h);
 
-      imagecopyresampled($dst_r,$img_r,0,0,$_POST['x'],$_POST['y'],
-          $targ_w,$targ_h,$_POST['w'],$_POST['h']);
+      imagecopyresampled($dst_r, $img_r, 0, 0, $_POST['x'], $_POST['y'], $targ_w, $targ_h, $_POST['w'], $_POST['h']);
 
       header('Content-type: image/jpeg');
-      imagejpeg($dst_r, DIRECTORIO_RAIZ."/images/perfiles/".basename($_FILES['foto']['tmp_name']), $jpeg_quality);
-*/
-      if (move_uploaded_file($_FILES['foto']['tmp_name'],
-      DIRECTORIO_RAIZ."/images/perfiles/".basename($_FILES['foto']['tmp_name']))) {
-        
-        $subida_correcta = 2;
-        $usuario -> cambiar_foto("images/perfiles/".basename($_FILES['foto']['tmp_name']));
-        RepositorioUsuario::actualizar_usuario(Conexion::obtener_conexion(),$usuario);
-        RepositorioArchivo::insertar_subida(Conexion::obtener_conexion(), $usuario -> obtener_id(), "images/perfiles/".basename($_FILES['foto']['tmp_name']), basename($_FILES['foto']['name']), $tipo_imagen, $_FILES['foto']['size']);
-        $alerta = "La imagen ha sido subida correctamente.";
+
+
+      if (imagejpeg($dst_r, "images/perfiles/".basename($_FILES['foto']['tmp_name']), $jpeg_quality)) {
+          $subida_correcta = 2;
+          $usuario -> cambiar_foto("images/perfiles/".basename($_FILES['foto']['tmp_name']));
+          RepositorioUsuario::actualizar_usuario(Conexion::obtener_conexion(),$usuario);
+          RepositorioArchivo::insertar_subida(Conexion::obtener_conexion(), $usuario -> obtener_id(), "images/perfiles/".basename($_FILES['foto']['tmp_name']), basename($_FILES['foto']['name']), $tipo_imagen, $_FILES['foto']['size']);
+          $alerta = "La imagen ha sido subida correctamente.";
       }else {
         $alerta = "Ha ocurrido un error al subir la imagen.";
       }

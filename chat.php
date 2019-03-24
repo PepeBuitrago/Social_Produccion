@@ -14,8 +14,11 @@ Conexion::abrir_conexion();
 $usuario = RepositorioUsuario::obtener_usuario_por_id(Conexion::obtener_conexion(), $_SESSION['id_usuario']);
 
 if (isset($_POST['enviar']) && isset($_GET['g']) && $_GET['g'] != 0) {
-	RepositorioChat::insertar_mensaje(Conexion::obtener_conexion(), $_SESSION['id_usuario'], $_GET['g'], $_POST['mensaje']);
+  if (RepositorioChat::insertar_mensaje(Conexion::obtener_conexion(), $_SESSION['id_usuario'], $_GET['g'], $_POST['mensaje'])) {
+    echo '<embed hidden="true" src="Beep.mp3" autoplay="true" loop="false"></embed>';
+  }
 }
+
 Conexion::cerrar_conexion();
 ?>
 <!DOCTYPE html>

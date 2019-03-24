@@ -130,11 +130,6 @@ $alerta_activo = '<div style="background-color: #6ABC6E;" class="alert">
 
 <?php
 
-if(isset($_POST['crear_grupo'])){
- 	if(RepositorioGrupo::insertar_grupo(Conexion::obtener_conexion(), $_SESSION['id_usuario'], $_POST['nombre_grupo'], $_POST['descripcion'])){
- 	echo $alerta_grupo;}
-}
-
 if (isset($_GET['p'])) {
 	if ($_GET['p'] == "Archivos") {
 		include_once 'plantillas/archivos.inc.php';
@@ -159,6 +154,11 @@ if (isset($_GET['p'])) {
 
 if(!$usuario -> esta_activo()){
 	echo $alerta_activo;
+}
+
+if(isset($_POST['crear_grupo'])){
+ 	if(RepositorioGrupo::insertar_grupo(Conexion::obtener_conexion(), $_SESSION['id_usuario'], $_POST['nombre_grupo'], $_POST['descripcion'])){
+ 	echo $alerta_grupo;}
 }
 
 Conexion::cerrar_conexion();

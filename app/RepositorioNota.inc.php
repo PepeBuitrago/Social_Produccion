@@ -38,7 +38,7 @@ class RepositorioNota{
                 
                 include_once 'Nota.inc.php';
                 
-                $sql = "SELECT * FROM notas WHERE grupo_id =".$grupo;
+                $sql = "SELECT * FROM notas WHERE grupo_id =".$grupo." ORDER BY id DESC";
                 
                 $sentencia = $conexion -> prepare($sql);
                 $sentencia -> execute();

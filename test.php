@@ -1,4 +1,4 @@
-<?php   
+<!--
 $source_image = imagecreatefromjpeg("https://lorempixel.com/800/600");
 $source_imagex = imagesx($source_image);
 $source_imagey = imagesy($source_image);
@@ -9,4 +9,6 @@ imagecopyresampled($dest_image, $source_image, 0, 0, 0, 0, $dest_imagex,
 $dest_imagey, 400, 400);
 header("Content-Type: image/jpeg");
 imagejpeg($dest_image,NULL,80);
-?>
+-->
+
+'<embed hidden="true" src="Beep.mp3" autoplay="true" loop="false"></embed>'

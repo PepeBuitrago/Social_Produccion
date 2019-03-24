@@ -58,7 +58,7 @@ if (isset($_POST['guardar_cambios'])) {
       $alerta = "Tu archivo no puede subirse";
     } else {
 
-      $targ_w = $targ_h = 800;
+      $targ_w = $targ_h = 500;
       $jpeg_quality = 80;
 
       $src = $_FILES['foto']['tmp_name'];

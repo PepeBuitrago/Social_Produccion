@@ -37,7 +37,7 @@ class RepositorioLocaciones{
                 
                 include_once 'Locacion.inc.php';
                 
-                $sql = "SELECT * FROM locaciones";
+                $sql = "SELECT * FROM locaciones ORDER BY id DESC";
                 
                 $sentencia = $conexion -> prepare($sql);
                 $sentencia -> execute();

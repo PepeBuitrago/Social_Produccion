@@ -1,5 +1,5 @@
 <div class="d-flex flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-  <i class='fas fa-shield-alt h1' style="color: #6C757D; margin-right: 20px;"></i>
+  <i class='fas fa-user-lock h1' style="color: #6C757D; margin-right: 20px;"></i>
   <h1 style="color: #6C757D;" class="h3">Cambiar contraseña</h1>
 </div>
 <div style="text-align: center;">

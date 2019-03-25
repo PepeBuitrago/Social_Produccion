@@ -78,9 +78,9 @@ CREATE TABLE locaciones (
 	nombre VARCHAR(100) NOT NULL,
 	descripcion VARCHAR(140)NOT NULL,
 	url_foto VARCHAR(255) NOT NULL,
-	coor_x DECIMAL NOT NULL,
-	coor_y DECIMAL NOT NULL,
-	coor_z DECIMAL NOT NULL,
+	coor_x FLOAT(10,10) NOT NULL,
+	coor_y FLOAT(10,10) NOT NULL,
+	coor_z FLOAT(10,10) NOT NULL,
 	fecha_subida DATETIME NOT NULL,
 	activo TINYINT NOT NULL,
 	PRIMARY KEY(id)

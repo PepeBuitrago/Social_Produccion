@@ -64,11 +64,9 @@ if (isset($_POST['guardar_cambios'])) {
       $src = $_FILES['foto']['tmp_name'];
       $img_r = imagecreatefromjpeg($src);
       $dst_r = ImageCreateTrueColor($targ_w, $targ_h);
+      echo '<script type="text/javascript">console.log("X: '.$_POST['x'].' Y: '.$_POST['y'].' W: '.$_POST['w'].' H: '.$_POST['h'].'");</script>';
 
       imagecopyresampled($dst_r, $img_r, 0, 0, $_POST['x'], $_POST['y'], $targ_w, $targ_h, $_POST['w'], $_POST['h']);
-
-      header('Content-type: image/jpeg');
-
 
       if (imagejpeg($dst_r, "images/perfiles/".basename($_FILES['foto']['tmp_name']), $jpeg_quality)) {
           $subida_correcta = 2;
@@ -171,10 +169,6 @@ Conexion::cerrar_conexion();
           include_once 'plantillas/configuracion_clave.php';
         }
 
-        if(!$usuario -> esta_activo()){
-          echo $alerta_activo;
-        }
-
         if(isset($_POST['guardar_cambios'])){
           if (isset($subida_correcta)) {
             echo $alerta_imagen;
@@ -202,7 +196,7 @@ Conexion::cerrar_conexion();
             </div>
             <div class="modal-body">
               <div class="modal-body imgCuter">
-                <img src="" style="max-width: 100%;" id="imgTarget">
+                <img src="" id="imgTarget">
               </div>
             </div>
             <div class="modal-footer">
@@ -265,6 +259,7 @@ Conexion::cerrar_conexion();
           });
 
           function showCoords(c){
+            console.log('Crop \nX: '+c.x+'\nY: '+c.y+'\nW: '+c.w+'\nH: '+c.h);
             $('#x').val(c.x);
             $('#y').val(c.y);
             $('#w').val(c.w);

@@ -23,3 +23,4 @@
 		</div>
 	</div>
 </div>
+<?php if(!$usuario -> esta_activo()){echo $alerta_activo;} ?>

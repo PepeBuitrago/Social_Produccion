@@ -12,6 +12,7 @@
       <input type="file" name="foto" id="foto">
     </div>
   </div>
+  <?php if(!$usuario -> esta_activo()){echo $alerta_activo;} ?>
   Nombre&nbsp&nbsp
   <input class="inputText" type="text" name="nombre" placeholder="<?php echo $usuario -> obtener_nombre();?>">
   <br>

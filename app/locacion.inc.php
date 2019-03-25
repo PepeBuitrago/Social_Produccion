@@ -9,6 +9,7 @@
 
 foreach ($locaciones as $fila) {
 ?>
+<a href="#">
 <div class="itemLocacion">
 	<img src="<?php echo $fila -> obtener_foto(); ?>">
 	<h1 class="h4"><i class='fas fa-map-marker-alt' style='font-size:17px'></i> <?php echo $fila -> obtener_nombre(); ?></h1>
@@ -25,6 +26,7 @@ foreach ($locaciones as $fila) {
 		</p>
 	</div>
 </div>
+</a>
 <?php
 }
 	Conexion::cerrar_conexion();

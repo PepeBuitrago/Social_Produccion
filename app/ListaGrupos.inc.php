@@ -9,7 +9,7 @@ $grupos = RepositorioGrupo::obtener_grupos_por_user(Conexion::obtener_conexion()
 
 if (count($grupos)) {
     foreach ($grupos as $fila) {?>
-      <a class="dropdown-item nav-link text-muted" href="<?php echo RUTA_GRUPO.'?g='.$fila -> obtener_id();?>&u=<?php echo $_GET['u'];?>">»&nbsp&nbsp<?php echo $fila -> obtener_nombre();?></a>
+      <a class="dropdown-item nav-link text-muted" href="<?php echo RUTA_GRUPO.'?g='.$fila -> obtener_id();?>&u=<?php echo $_GET['u'];?>"><i class='fas fa-users'></i>&nbsp&nbsp<?php echo $fila -> obtener_nombre();?></a>
       <?php
     }
 }

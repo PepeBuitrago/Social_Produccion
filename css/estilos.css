@@ -198,10 +198,4 @@ div.imagen_contenedor label {
     grid-gap: 15px;
     justify-content: center;
 }
-.jcrop-centered {
-    display: inline-block;
-    max-width: 100%;
-}
-.imgCuter {
-    text-align: center;
-}
+.jcrop-centered {}

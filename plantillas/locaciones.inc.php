@@ -6,7 +6,7 @@
 	    </div>
 	 </div>
 </div>
-
+<?php if(!$usuario -> esta_activo()){echo $alerta_activo;} ?>
 <?php
 if(isset($_POST['compartir_locacion'])){
 	$alerta = false;
@@ -52,13 +52,14 @@ if(isset($_POST['compartir_locacion'])){
 	*/
 	      if (move_uploaded_file($_FILES['foto_locacion']['tmp_name'],
 	      DIRECTORIO_RAIZ."/images/locaciones/".basename($_FILES['foto_locacion']['tmp_name']))) {
+	      	echo '<script type="text/javascript">console.log("X: '.$_POST['coor_x'].' Y: '.$_POST['coor_y'].'");</script>';
 	        $subida_correcta = 2;
 		    $foto = "images/locaciones/".basename($_FILES['foto_locacion']['tmp_name']);
 			if(RepositorioLocaciones::insertar_locacion(Conexion::obtener_conexion(), $_SESSION['id_usuario'], $_POST['nombre_locacion'], $_POST['descripcion_locacion'], $foto, $_POST['coor_x'], $_POST['coor_y'])){
 		 	$alerta = 'Locacion insertada correctamente';}
 	        RepositorioArchivo::insertar_subida(Conexion::obtener_conexion(), $usuario -> obtener_id(), "images/perfiles/".basename($_FILES['foto_locacion']['tmp_name']), basename($_FILES['foto_locacion']['name']), $tipo_imagen, $_FILES['foto_locacion']['size']);
 	        $alerta = "La imagen ha sido subida correctamente.";
-	        echo '<script type="text/javascript">alert('.$alerta.');</script>';
+	        echo '<script type="text/javascript">alert("'.$alerta.'");</script>';
 	      }else {
 	        $alerta = "Ha ocurrido un error al subir la imagen.";
 	      }
@@ -84,14 +85,21 @@ if(isset($_POST['compartir_locacion'])){
 			      </div>
 			      <div class="modal-body">
 			      <form method="post" action="index.php?p=Locaciones" enctype="multipart/form-data">
+			      	<div class="row">
+						<div>
+							<img style="margin: 15px;" width="180" height="135" src="http://www.maqroliqores.com/wp-content/uploads/2016/12/icono-contacto.png" id="imgLocacion" class="img-thumbnail">
+						</div>
+						<div class="">
+							<label class="" for="foto_locacion">Foto</label>
+							<input style="width: 53%;" type="file" name="foto_locacion" id="foto_locacion" required="true">
+						</div>
+					</div>
 			      	<label class="">Nombre</label>
 					<input class="input100 inputText" type="text" name="nombre_locacion" placeholder="Ingresa un nombre" required="true">
 					<br>
 					<label class="">Descripción</label>
 					<br>
 					<textarea rows="3" class="input100 inputText" name="descripcion_locacion" placeholder="Ingresa una descripción corta" required="true"></textarea>
-					<label class="" for="foto_locacion">Foto</label>
-					<input type="file" name="foto_locacion" id="foto_locacion" required="true">
 					<hr>
 					<input type="hidden" name="coor_x" id="coor_x">
 					<input type="hidden" name="coor_y" id="coor_y">
@@ -111,7 +119,7 @@ if(isset($_POST['compartir_locacion'])){
 			  </div>
 			</div>
 
-
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 		function loadSitios() {
           var req = new XMLHttpRequest();
@@ -124,4 +132,22 @@ if(isset($_POST['compartir_locacion'])){
           req.send();
         }
         setInterval(function(){loadSitios();}, 1000);
+
+        $('#foto_locacion').on("change", function(){
+          console.log('Test');
+          var preview = document.getElementById('imgLocacion');
+          var file    = document.querySelector('input[type=file]').files[0];
+          var reader = new FileReader();
+
+          reader.onloadend = function () {
+            preview.src = reader.result;
+          }
+
+          if (file) {
+            reader.readAsDataURL(file);
+          } else {
+            preview.src = "";
+          }
+
+        });
 </script>

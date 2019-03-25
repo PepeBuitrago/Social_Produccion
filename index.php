@@ -72,11 +72,6 @@ $alerta_activo = '<div style="background-color: #6ABC6E;" class="alert">
       	<hr>
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link text-muted" href="<?php echo SERVIDOR;?>">
-              Inicio  <i class='fas fa-home' style='font-size:20px'></i>
-            </a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link text-muted" href="<?php echo SERVIDOR;?>?p=Archivos">
               Archivos  <i class='fas fa-folder-open' style='font-size:20px'></i>
             </a>
@@ -152,10 +147,6 @@ if (isset($_GET['p'])) {
 		  </div><?php
 }
 
-if(!$usuario -> esta_activo()){
-	echo $alerta_activo;
-}
-
 if(isset($_POST['crear_grupo'])){
  	if(RepositorioGrupo::insertar_grupo(Conexion::obtener_conexion(), $_SESSION['id_usuario'], $_POST['nombre_grupo'], $_POST['descripcion'])){
  	echo $alerta_grupo;}
@@ -185,6 +176,17 @@ Conexion::cerrar_conexion();
 					<label class="">Descripción</label>
 					<br>
 					<textarea rows="3" class="input100 inputText" name="descripcion" placeholder="Ingresa una descripción corta (Opcional)"></textarea>
+					<div id="listaIntegrantes">
+						<ul>
+							<li style="margin-bottom: 10px;">
+								<img style="border-radius: 50%;" width="25" src="https://lorempixel.com/800/800">  Test Integrante
+							</li>
+							<li style="margin-bottom: 10px;">
+								<img style="border-radius: 50%;" width="25" src="https://lorempixel.com/800/800">  Test Integrante
+							</li>
+						</ul>
+					</div>
+					<br>
 					<div class="input-group">
     					<input type="text" class="form-control" placeholder="Buscar participantes">
 	    				<div class="input-group-btn">

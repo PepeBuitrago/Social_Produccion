@@ -92,7 +92,7 @@ Conexion::cerrar_conexion();
             </div>
             <div class="type_msg">
               <div class="input_msg_write">
-              	<form method="post" action="chat.php?g=<?php echo $_SESSION['grupo_usuario'];?>">
+              	<form method="post" action="chat.php?g=<?php echo $_SESSION['grupo_usuario'];?>&u=<?php echo $_SESSION['id_usuario'];?>">
               		<input type="text" class="write_msg" placeholder="Escribe un mensaje..." name="mensaje" autocomplete="off" />
                   <button class="file_send_btn colorOficial" type="button" name="file"><i class='fas fa-paperclip'></i></button>
                 	<button class="msg_send_btn colorOficial" type="submit" name="enviar"><i class='fas fa-paper-plane'></i></button>

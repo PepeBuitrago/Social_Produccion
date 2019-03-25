@@ -52,7 +52,7 @@ if(isset($_POST['compartir_locacion'])){
 	*/
 	      if (move_uploaded_file($_FILES['foto_locacion']['tmp_name'],
 	      DIRECTORIO_RAIZ."/images/locaciones/".basename($_FILES['foto_locacion']['tmp_name']))) {
-	      	echo '<script type="text/javascript">console.log("X: '.$_POST['coor_x'].' Y: '.$_POST['coor_y'].'");</script>';
+	      	echo '<script type="text/javascript">console.log("X: '.$_POST['coor_x'].'\nY: '.$_POST['coor_y'].'");</script>';
 	        $subida_correcta = 2;
 		    $foto = "images/locaciones/".basename($_FILES['foto_locacion']['tmp_name']);
 			if(RepositorioLocaciones::insertar_locacion(Conexion::obtener_conexion(), $_SESSION['id_usuario'], $_POST['nombre_locacion'], $_POST['descripcion_locacion'], $foto, $_POST['coor_x'], $_POST['coor_y'])){
@@ -87,7 +87,7 @@ if(isset($_POST['compartir_locacion'])){
 			      <form method="post" action="index.php?p=Locaciones" enctype="multipart/form-data">
 			      	<div class="row">
 						<div>
-							<img style="margin: 15px;" width="180" height="135" src="http://www.maqroliqores.com/wp-content/uploads/2016/12/icono-contacto.png" id="imgLocacion" class="img-thumbnail">
+							<img style="margin: 15px;" width="180" height="135" src="https://assets.materialup.com/uploads/9ffe2f61-1193-494f-97a3-d9e334335ae0/preview.jpg" id="imgLocacion" class="img-thumbnail">
 						</div>
 						<div class="">
 							<label class="" for="foto_locacion">Foto</label>

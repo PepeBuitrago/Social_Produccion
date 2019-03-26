@@ -9,7 +9,7 @@
 
 foreach ($locaciones as $fila) {
 ?>
-<a href="#">
+<a class="locacionHov" href="locacion.php?s=<?php echo $fila -> obtener_id(); ?>">
 <div class="itemLocacion">
 	<img src="<?php echo $fila -> obtener_foto(); ?>">
 	<h1 class="h4"><i class='fas fa-map-marker-alt' style='font-size:17px'></i> <?php echo $fila -> obtener_nombre(); ?></h1>

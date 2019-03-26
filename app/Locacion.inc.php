@@ -3,6 +3,7 @@
 class Locacion {
     
     private $id;
+    private $ususario;
     private $nombre;
     private $descripcion;
     private $url_foto;
@@ -12,8 +13,9 @@ class Locacion {
     private $fecha_subida;
     private $activo;
     
-    public function __construct($id, $nombre, $descripcion, $url_foto, $coor_x, $coor_y, $coor_z, $fecha_subida, $activo) {
+    public function __construct($id, $ususario, $nombre, $descripcion, $url_foto, $coor_x, $coor_y, $coor_z, $fecha_subida, $activo) {
         $this -> id = $id;
+        $this -> ususario = $ususario;
         $this -> nombre = $nombre;
         $this -> descripcion = $descripcion;
         $this -> url_foto = $url_foto;
@@ -27,6 +29,10 @@ class Locacion {
     public function obtener_id() {
         return $this -> id;
     }
+
+    public function obtener_usuario(){
+        return $this -> ususario;
+    }
     
     public function obtener_nombre() {
         return $this -> nombre;
@@ -34,10 +40,6 @@ class Locacion {
 
     public function obtener_descripcion() {
         return $this -> descripcion;
-    }
-
-    public function obtener_apellido() {
-        return $this -> apellido;
     }
     
     public function obtener_foto() {
@@ -70,11 +72,6 @@ class Locacion {
 
     public function cambiar_descripcion($descripcion) {
         $this -> descripcion = $descripcion;
-    }
-
-
-    public function cambiar_apellido($apellido) {
-        $this -> apellido = $apellido;
     }
 
     public function cambiar_foto($foto) {

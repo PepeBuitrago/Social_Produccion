@@ -3,7 +3,7 @@
   <h1 style="color: #6C757D;" class="h3">Cambiar contraseña</h1>
 </div>
 <div style="text-align: center;">
-<p style="width: 60%; margin: 0px 20%;">Se recomienda usar una contraseña segura que no uses para ningún otro sitio</p><br>
+<p style="width: 40%; margin: 0px 30%;">Se recomienda usar una contraseña segura que no uses para ningún otro sitio</p><br>
 <form method="post" action="<?php echo RUTA_CONFIGURACION?>?config=seguridad">
   Nueva contraseña&nbsp&nbsp
   <input class="inputText" type="password" name="clave1" placeholder="Ingresa una clave">

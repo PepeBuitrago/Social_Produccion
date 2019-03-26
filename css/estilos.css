@@ -199,3 +199,6 @@ div.imagen_contenedor label {
     justify-content: center;
 }
 .jcrop-centered {}
+.locacionHov:hover {
+    color: #212529;
+}

@@ -47,7 +47,7 @@ class RepositorioLocaciones{
                 if (count($resultado)) {
                     foreach ($resultado as $fila) {
                         $locaciones[] = new Locacion(
-                                $fila['id'], $fila['nombre'], $fila['descripcion'], $fila['url_foto'], $fila['coor_x'], $fila['coor_y'], $fila['coor_z'], $fila['fecha_subida'], $fila['activo']
+                                $fila['id'], $fila['usuario'], $fila['nombre'], $fila['descripcion'], $fila['url_foto'], $fila['coor_x'], $fila['coor_y'], $fila['coor_z'], $fila['fecha_subida'], $fila['activo']
                         );
                     }
                 } else {
@@ -60,6 +60,44 @@ class RepositorioLocaciones{
         }
         
         return $locaciones;      
+    }
+
+    public static function obtener_locacion_por_id($conexion, $id) {
+        $locacion = null;
+        
+        if (isset($conexion)) {
+            try {
+                include_once 'Locacion.inc.php';
+                
+                $sql = "SELECT * FROM locaciones WHERE id = :id";
+                
+                $sentencia = $conexion -> prepare($sql);
+                
+                $sentencia -> bindParam(':id', $id, PDO::PARAM_STR);
+                
+                $sentencia -> execute();
+                
+                $resultado = $sentencia -> fetch();
+                
+                if (!empty($resultado)) {
+                    $locacion = new Locacion(
+                            $resultado['id'],
+                            $resultado['usuario'],
+                            $resultado['nombre'],
+                            $resultado['descripcion'],
+                            $resultado['url_foto'],
+                            $resultado['coor_x'],
+                            $resultado['coor_y'],
+                            $resultado['coor_z'],
+                            $resultado['fecha_subida'],
+                            $resultado['activo']);
+                }
+            } catch (PDOException $ex) {
+                print 'ERROR' . $ex -> getMessage();
+            }
+        }
+        
+        return $locacion;
     }
 }
 ?>

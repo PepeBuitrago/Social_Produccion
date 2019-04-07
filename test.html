@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Webcam test
+        </title>
+    </head>
+    <body>
+        <video autoplay="" controls="">
+        </video>
+        <script type="text/javascript">
+            window.URL = window.URL || window.webkitURL;
+		navigator.getUserMedia({audio:true, video:true},function(vid){
+			document.querySelector('video').src = window.URL.createObjectURL(vid);
+		});
+        </script>
+    </body>
+</html>

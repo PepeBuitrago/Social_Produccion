@@ -89,7 +89,6 @@ Conexion::cerrar_conexion();
           </div>
         </div>
         <hr>
-        <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam doloribus placeat, cum repellat vitae deleniti quod quos molestiae neque ipsam odit temporibus qui sed. Adipisci dolores debitis optio quod dignissimos!</p>
 
       </main>
     </div>
